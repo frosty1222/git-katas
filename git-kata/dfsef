@@ -1,0 +1,468 @@
+[33mcommit dcc0b56a6ad9125392bbaccac99022f1c6971fac[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: P-A Lundblad <per-anders.lundblad@eficode.com>
+Date:   Fri May 13 14:31:52 2022 +0200
+
+    Fixed typo in defaultBranch config #319
+    
+    When creating new bare repo for fake remote usage, default branch name is
+    supposed to be set according to variable declared in utils.sh
+    The git command that creates the repo has the command misspelled and hence
+    the branch name isn't set correctly. This is only noticeable if the user has
+    changed their default branch name config to something else than master.
+    
+    This patch fixes the typo and the config should now work.
+
+[33mcommit c84e68e6de75f4f9e97df21e53b18468b06178ef[m
+Author: Per-Anders Lundblad <pa@praqma.net>
+Date:   Tue May 17 13:26:27 2022 +0200
+
+    Fix language in README.md in merge-conflict kata
+
+[33mcommit 0493be1a7c9e886ed490a7f0a0b069ede7a58dcf[m
+Author: arno-h <arno-h@users.noreply.github.com>
+Date:   Tue Mar 8 13:46:17 2022 +0100
+
+    Add missing shebang to save-my-commit/setup.sh
+
+[33mcommit 46a9f6fdfec7eb9f279362ae65a4ac5f05b0d3b8[m
+Author: P-A Lundblad <per-anders.lundblad@eficode.com>
+Date:   Fri May 13 15:41:16 2022 +0200
+
+    Fix broken test with git versions >= 2.35.2 #321
+    
+    As a result of a fix in git for CVE-2022-24765 tests seems to fail on
+    git versions from 2.35.2
+    
+    For these to work the working directory has to be added as a git safe
+    directory.
+
+[33mcommit c76d5823a5c101fd8974b1617b3e169e67aeae05[m
+Author: Michael Ingeman-Nielsen <michael.ingeman-nielsen@eficode.com>
+Date:   Mon Nov 22 18:23:14 2021 +0100
+
+    Avoid confirmation prompt in mergesort setup script
+    
+    Fixes #271
+
+[33mcommit 845044bd3be21cd247a35e6c2ede1b86f9304396[m
+Author: Jan Krag <jan.krag@eficode.com>
+Date:   Mon Nov 15 13:24:49 2021 +0100
+
+    Improve wording in ignore exercise
+
+[33mcommit 262c7ca555a5fb4d23dc86c8d6c735d61bb067a0[m
+Merge: 08a20a2 55f2582
+Author: Christian Clausen <maxclausen@gmail.com>
+Date:   Fri Nov 12 15:08:19 2021 +0100
+
+    Merge pull request #310 from eficode-academy/naesheim-patch-2
+    
+    Use restore for undoing changes
+
+[33mcommit 55f2582af8d6707343eff10234538096b7f4880f[m[33m ([m[1;31morigin/naesheim-patch-2[m[33m)[m
+Merge: d3b21b7 08a20a2
+Author: Christian Clausen <maxclausen@gmail.com>
+Date:   Fri Nov 12 11:19:08 2021 +0100
+
+    Merge branch 'master' into naesheim-patch-2
+
+[33mcommit 08a20a272a6b03a8fce1d527a400f53d43a5e82b[m
+Author: Jan Krag <jan.krag@eficode.com>
+Date:   Wed Nov 10 16:19:36 2021 +0100
+
+    Add a comment about feature/uppercase
+    
+    It is not obvious to beginners that `feature/uppercase` is a legal branch name and that this is what the exercise actually suggest,
+    so I added a comment to clarify this.
+
+[33mcommit d3b21b7f10b15828ec2ca14e4037750c6433ddc8[m
+Author: Hans Georg Næsheim <hg.nesheim@gmail.com>
+Date:   Fri Nov 5 11:39:07 2021 +0100
+
+    Update README.md
+
+[33mcommit 160094cc3cb1aadfb5139a25755ddf3d5995b59f[m
+Author: Hans Georg Næsheim <hg.nesheim@gmail.com>
+Date:   Thu Nov 4 11:39:16 2021 +0100
+
+    Update README.md
+    
+    In the training the students learn multiple ways of restoring a file. Both checkout and reset is fine alternatives, but I think restore is the most accurate command for the job. Both checkout and reset also has other purposes where their use makes more sense. For instance reset is used whenever you want to move HEAD.
+
+[33mcommit 02d104345060b37565550f77c2bce06ce5738ef5[m[33m ([m[1;33mtag: 0.3.0[m[33m)[m
+Author: Jan Krag <jan.krag@eficode.com>
+Date:   Tue Oct 26 16:09:57 2021 +0200
+
+    Update to use git switch instead of git checkout
+    
+    The new commands `git switch`and `git restore` were introduced
+    in 2.23 back in August 2019, and are much cleaner than the
+    old `git checkout`, so I believe that we
+    should be teaching the new way, not the old.
+    
+    While `git switch` and `git restore` are in principal still marked as
+    experimental in the documentation, they are here to stay.
+    Even output from commands like git status,
+    have gone away from suggesting `git checkout`.
+    
+    This commit goes through all the README files and makes appropriate
+    changes to recomend `git switch` instead of `git checkout`
+    (and `git switch -c` instead of `git checkout -b`)
+    
+    The actual setup scripts are still left untouched for maximum compatablility.
+    If you have e.g. participants in a training using very old Git versions,
+    it is still a lot easier to tell them to use `git checkout`
+    when `git switch`is mentioned,
+    than it is to debug scripts that are failing miserably.
+
+[33mcommit 8939fd0ac265ea840f2cbd8a0762cc26d72cbbaa[m
+Author: Jan Krag <jan.krag@eficode.com>
+Date:   Tue Oct 26 16:29:35 2021 +0200
+
+    Cleaned up markdown in README files
+    
+    Mostly fixing markdown-lint errors
+
+[33mcommit 92ffd7a8bc0b1f9061c86fb7ce71e799c0b6f48c[m
+Author: Bjarne Kjær <bjarne.priebe@gmail.com>
+Date:   Tue Aug 10 10:31:53 2021 +0200
+
+    add git switch to exercise basic-branching
+
+[33mcommit ed2250f26fbbe3355e5b7f3416195f128bfce44f[m
+Author: zanderhavgaard <zander@havgaard.dk>
+Date:   Fri Mar 26 14:58:17 2021 +0100
+
+    Add GH action job with matrix of git versions
+
+[33mcommit 51ab543a31713dc5f19fa1c78a312a3b6bcb7f13[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Fri Mar 26 13:29:28 2021 +0100
+
+    Test on both bash and zsh
+    
+    - Allow control of which shell is used in test-all script
+    - Add job to CI Action that tests on Zsh on mac
+    - Cleanup GH actions naming & remove redundant Docker based zsh job
+    
+    Co-author: @zanderhavgaard
+
+[33mcommit cbea88ced6e44dc3b8c35fa391ca3b7c9168fe44[m
+Author: zanderhavgaard <zander@havgaard.dk>
+Date:   Fri Mar 26 11:57:59 2021 +0100
+
+    Add comment on cleaning up test artifacts
+
+[33mcommit 360fcda6f195bcf0b6952745b4e7c20e1648196e[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Mon Mar 15 16:35:12 2021 +0100
+
+    Maybe setting user.name & email globally will fix
+
+[33mcommit 294e2ef6bf25162e991656c6ab061e0160929425[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Mon Mar 15 16:33:04 2021 +0100
+
+    Set user name & email in pipeline
+
+[33mcommit 7f87ffaa074bb6182e44dcf8710d33cf43056e33[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Fri Mar 12 14:44:30 2021 +0100
+
+    Control default branch & avoid warning about this
+    
+    Since Git 2.28, caling git init will print out a long'ish warning
+    strongly recommending to set init.defaultBranch in your global config.
+    While this warning might be good in "real life" it is unnecessarily
+    hostile to beginners, and also very verbose.
+    
+    The same version of Git introduced:
+    
+     --initial-branch=<branch-name>
+    
+     on git init, but using this would not be backwards compatible for
+    people using git < 2.28.
+    So I ame up with the solution of setting the new init.defaultBranch config
+    inline whenever calling git init.
+    
+    In (nearly) all the .sh scripts, I refer to a $DEFAULT_BRANCH variable
+    set in utils.sh that is sourced in (nearly) all setup scripts.
+    
+    For the PowerShell scripts, there isn't really a shared utils script
+    the same way, so those are currently hardcoded to master, but easy to
+    change for someone with more PS knowledge.
+
+[33mcommit bfafc0443b6196bbb0cf556b9f8a1d31ae1b8896[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Mon Mar 15 16:15:14 2021 +0100
+
+    Run test-all.sh in pipeline
+    
+    For now, this only changes what is run in the bash tests on ubuntu & mac
+    
+    We need to addres the testing in ZSH seperately,
+    as this is done in Docker
+
+[33mcommit 67af4d0a8478e198a4fe73716ccb59c6c788b163[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Mon Mar 15 16:05:56 2021 +0100
+
+    Count & report no. of failed tests
+
+[33mcommit 6f1af22057154727f28c1ef53cffebd49dff891d[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Mon Mar 15 15:50:10 2021 +0100
+
+    ShellCheck linting improvements
+
+[33mcommit 4fc9748a34becdabedbf492666f317c0bf2a62f6[m
+Author: Mads Jensen <maj@praqma.net>
+Date:   Mon Mar 15 14:21:40 2021 +0100
+
+    Use a function
+
+[33mcommit a6672e353a12b4c1e6ffebc66d670fafa97cbe84[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Fri Mar 12 12:28:57 2021 +0100
+
+    Make the test.sh script actually fail!
+    
+    The test.sh has been rewritten to use the new test_setup.sh
+    and thus actually causes a non-zero exit on failure.
+
+[33mcommit f6a64f82fec1d0f26289714d7fe9fceccc2a2f8e[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Fri Mar 12 12:26:38 2021 +0100
+
+    Run all tests in lexicographical order
+    
+    Better readability, when test output is listed in same order
+    as in file system and on GitHub :-)
+
+[33mcommit 3527832baea8cf8a268679ed8ab9a6ae498540f8[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Fri Mar 12 12:02:19 2021 +0100
+
+    Add feature to test all kata setup.sh scripts
+    
+    ./utils/test/test_setup.sh can be used to test a single kata
+    Run it from the kata folder as:
+    ../utils/test/test_setup.sh
+    
+    To test all katas, run ./test-all.sh from the root folder.
+    
+    This commit also includes a few bug-fixes that were caught by the test.
+    In reverted-merge there is a merge operation in the setup that causes a
+    conflict on purpose, and fixes it.
+    I "wrapped" that in an `|| true` to make it not fail the test script.
+
+[33mcommit 0a29db0b6bd31011a47bd7a27c322e535c8487f3[m
+Author: Sofus Albertsen <sofusalbertsen@users.noreply.github.com>
+Date:   Thu Mar 11 09:57:49 2021 +0100
+
+    adding a new step for basic revert exercise (#296)
+
+[33mcommit 4650e5ce201058ffa1e6562afca48abd25aa49c1[m
+Author: Sofus Albertsen <sofusalbertsen@users.noreply.github.com>
+Date:   Wed Feb 24 09:35:04 2021 +0100
+
+    Added a step to 3-way-merge (#295)
+
+[33mcommit 40fefdb7fe339f7eece71f90930b20f57cb1766f[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Mon Dec 14 20:50:42 2020 +0100
+
+    Add fake remote to advanced-rebase-interactive
+
+[33mcommit 9bff63760fe26d659e8edebf2acf55986361a200[m[33m ([m[1;33mtag: 0.2.0[m[33m)[m
+Author: P-A Lundblad <pa@praqma.net>
+Date:   Fri Nov 6 09:23:33 2020 +0100
+
+    Clarify description of aliases
+    
+    Add part on reduce the risk for typos
+    Add that alias can also be on a system level
+
+[33mcommit 03f8a835d4d9675adff8069e469b7be5bf816899[m
+Author: Jan Krag <jak@praqma.net>
+Date:   Wed Sep 30 16:22:06 2020 +0200
+
+    Add --global to unset command
+
+[33mcommit 6c8746e0f30b2ea9f8b0cea389e009a2f6620e29[m
+Author: P-A Lundblad <pa@praqma.net>
+Date:   Wed Sep 30 15:55:32 2020 +0200
+
+    Add kata on aliases
+
+[33mcommit bb52781bab0361d33127ff2e4eee62c775012ac8[m
+Author: Thierry Lacour <thi@praqma.net>
+Date:   Fri Oct 9 11:07:22 2020 +0200
+
+    Fix restore kata title
+
+[33mcommit dde744a90a77bb0c9bc60b99d6a9e90cb89857ff[m
+Author: Thierry Lacour <thi@praqma.net>
+Date:   Wed Sep 30 16:21:22 2020 +0200
+
+    Add restore from history to restore kata
+
+[33mcommit b99b6821cc38c4949f162bd7b7e4c8c4140cec2c[m
+Author: Thierry Lacour <thi@praqma.net>
+Date:   Wed Sep 30 16:05:28 2020 +0200
+
+    Add restore kata
+
+[33mcommit 3004959c79e0f83e39833c9869daed7e77789d86[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Fri Oct 30 10:16:21 2020 +0100
+
+    [Cherry-pick] Fixed some wordings
+
+[33mcommit 4003230fc5e089ce725bab6748db8f2701d52b24[m
+Author: kardelio <kardeliogithub@outlook.com>
+Date:   Fri Oct 16 14:45:53 2020 +0200
+
+    Added the git cherry pick task
+
+[33mcommit 8e82726c29b261da121cdd9191ebe0a8f692491e[m[33m ([m[1;33mtag: 0.1.1[m[33m)[m
+Author: Thierry Lacour <thi@praqma.net>
+Date:   Fri Sep 25 15:26:03 2020 +0200
+
+    Fix tag in release asset name
+
+[33mcommit fbd782d53eeb3a79358cdde392bc06589d1d89a0[m
+Author: Thierry Lacour <thi@praqma.net>
+Date:   Fri Sep 25 14:06:00 2020 +0200
+
+    Fix indentation issue in publish.yml
+
+[33mcommit 4e19fc0adeef89c5098fecd762623f1e65d84a48[m
+Author: Thierry Lacour <thi@praqma.net>
+Date:   Fri Sep 25 13:45:04 2020 +0200
+
+    Change archive publising to a GH Release
+
+[33mcommit b17be5e5d005dced917123905b3fe8cce24edd20[m
+Author: Thierry Lacour <thi@praqma.net>
+Date:   Fri Sep 25 13:19:09 2020 +0200
+
+    Add publish workflow
+    
+    This is a precursor to our upcoming release pipeline, where the katas are made accessible without cloning them down, causing the dreaded nested git repo confusion.
+
+[33mcommit cc38a4a07a6281c21e4d059e652dc86505b68bce[m
+Author: Claus Schneider (Praqma) <cls@praqma.net>
+Date:   Thu Apr 16 14:34:38 2020 +0200
+
+    Final proposal for subtree git-katas
+    
+    Co-authored-by: Mads Jensen <mads.jensen@eficode.com>
+
+[33mcommit 122f4cf0649c79cc74b531764ce4ec4f2a33aeb6[m
+Author: EfiGaja <gaja.kochaniewicz@eficode.com>
+Date:   Fri Sep 11 15:46:41 2020 +0300
+
+    Add an explanation for commands to run with amend.
+
+[33mcommit fe76b80e4dcee2b5453f88187e5ed4e53f341547[m
+Author: EfiGaja <gaja.kochaniewicz@eficode.com>
+Date:   Fri Sep 11 13:54:43 2020 +0300
+
+    Add commands that show contents of commits to better illustrate amending via adding a new file.
+
+[33mcommit 1d3fdd6ffa76c5220706ad562b65ba5d1aa2d5bc[m
+Author: bothzoli <bothzoli@gmail.com>
+Date:   Sat Sep 5 13:48:15 2020 +0200
+
+    Fix PR review findings
+
+[33mcommit b05ba04591b1d9294a8b94f44434f6f662f36c66[m
+Author: bothzoli <bothzoli@gmail.com>
+Date:   Thu Jul 2 09:54:40 2020 +0200
+
+    Create change author kata
+    
+    With this kata you can practice what does it take to change the authors
+    of already committed and pushed commits.
+    The idea sprang from a personal experience.
+
+[33mcommit face7c1d652f87d791486f246ff326682d17bb07[m
+Author: Thierry Lacour <thierry.lacour@eficode.com>
+Date:   Tue Sep 8 12:23:35 2020 +0200
+
+    Add VS Code as a suggested editor
+
+[33mcommit 74b71e0d0f66e2203dbbb7d49714eb586dadc98c[m
+Author: Dan Grøndahl Glavind <dan.glavind@eficode.com>
+Date:   Tue Sep 8 21:15:46 2020 +0200
+
+    Disable GPG signing of commits locally during setup
+    
+    As signing might be enabled globally, commits from setup scripts local user
+    should happen without signing.
+
+[33mcommit 58ea1c240aac9173fca6b7e23ff70d84bdf35abb[m
+Author: Joachim Bülow <43139346+joachimbulow@users.noreply.github.com>
+Date:   Wed Aug 5 13:56:43 2020 +0200
+
+    Update README.md
+
+[33mcommit 78fc4d14f38407b16d6f384407ed63d42bd8a6e7[m
+Author: Christoffer Nissen <christoffer.nissen@eficode.com>
+Date:   Wed Aug 5 14:09:17 2020 +0200
+
+    added explanatory text to ffmerge README
+
+[33mcommit ad2bf25b18fd1d0b8392395d503f34e5fca811e1[m
+Author: Sofus Albertsen <soa@praqma.com>
+Date:   Wed Aug 5 15:09:52 2020 +0200
+
+    Fix errors in actions CI file
+
+[33mcommit 37d36504fef18d5b91f4f49aec51db9b4e7a955e[m
+Author: Sofus Albertsen <soa@praqma.com>
+Date:   Wed Aug 5 15:07:30 2020 +0200
+
+    Complete zsh test
+
+[33mcommit ceb99e7aaf68cec4bfd7c23d33cc8aea1ab78c4b[m
+Author: Sofus Albertsen <soa@praqma.com>
+Date:   Wed Aug 5 13:22:05 2020 +0200
+
+    adding Dockerfile with zsh for regression test
+
+[33mcommit 5321a4863db500d028071018c296d5b1c71fb7d0[m
+Author: Sofus Albertsen <sofusalbertsen@users.noreply.github.com>
+Date:   Wed Aug 5 11:34:39 2020 +0200
+
+    FIX problem that kills shell if not bash (#268)
+    
+    Co-authored-by: Jan Krag <jankrag@gmail.com>
+
+[33mcommit 98d531e12c8890fd5e0527923730fca9c06ad199[m
+Author: bothzoli <bothzoli@gmail.com>
+Date:   Wed Jun 10 07:51:06 2020 +0200
+
+    Further improve error handling in setup.ps1
+    
+    Resolves: #243
+
+[33mcommit b44b2c9cd19bc10f4ad7121659c8a71478421b8c[m
+Author: bothzoli <bothzoli@gmail.com>
+Date:   Tue Jun 9 14:41:15 2020 +0200
+
+    Gracefully fail when removing exercises folder
+    
+    If for whatever reason the `exercises` folder cannot be removed the
+    `setup.ps1` script did not stop but continue running potentionally
+    spilling a lot of error messages.
+    With this change the failing deletion will stop the setup script.
+    
+    Resolves: #243
+
+[33mcommit c70be832f3c02582ed3b587b282aa1c034f5dc1b[m
+Author: git-katas trainer bot <git-katas@example.com>
+Date:   Sat Jun 13 00:04:31 2020 +0200
+
+    Update README.md for bisect and merge-driver

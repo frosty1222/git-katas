@@ -1,0 +1,3536 @@
+[33mcommit dcc0b56a6ad9125392bbaccac99022f1c6971fac[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: P-A Lundblad <per-anders.lundblad@eficode.com>
+Date:   Fri May 13 14:31:52 2022 +0200
+
+    Fixed typo in defaultBranch config #319
+    
+    When creating new bare repo for fake remote usage, default branch name is
+    supposed to be set according to variable declared in utils.sh
+    The git command that creates the repo has the command misspelled and hence
+    the branch name isn't set correctly. This is only noticeable if the user has
+    changed their default branch name config to something else than master.
+    
+    This patch fixes the typo and the config should now work.
+
+[33mcommit c84e68e6de75f4f9e97df21e53b18468b06178ef[m
+Author: Per-Anders Lundblad <pa@praqma.net>
+Date:   Tue May 17 13:26:27 2022 +0200
+
+    Fix language in README.md in merge-conflict kata
+
+[33mcommit 0493be1a7c9e886ed490a7f0a0b069ede7a58dcf[m
+Author: arno-h <arno-h@users.noreply.github.com>
+Date:   Tue Mar 8 13:46:17 2022 +0100
+
+    Add missing shebang to save-my-commit/setup.sh
+
+[33mcommit 46a9f6fdfec7eb9f279362ae65a4ac5f05b0d3b8[m
+Author: P-A Lundblad <per-anders.lundblad@eficode.com>
+Date:   Fri May 13 15:41:16 2022 +0200
+
+    Fix broken test with git versions >= 2.35.2 #321
+    
+    As a result of a fix in git for CVE-2022-24765 tests seems to fail on
+    git versions from 2.35.2
+    
+    For these to work the working directory has to be added as a git safe
+    directory.
+
+[33mcommit c76d5823a5c101fd8974b1617b3e169e67aeae05[m
+Author: Michael Ingeman-Nielsen <michael.ingeman-nielsen@eficode.com>
+Date:   Mon Nov 22 18:23:14 2021 +0100
+
+    Avoid confirmation prompt in mergesort setup script
+    
+    Fixes #271
+
+[33mcommit 845044bd3be21cd247a35e6c2ede1b86f9304396[m
+Author: Jan Krag <jan.krag@eficode.com>
+Date:   Mon Nov 15 13:24:49 2021 +0100
+
+    Improve wording in ignore exercise
+
+[33mcommit 262c7ca555a5fb4d23dc86c8d6c735d61bb067a0[m
+Merge: 08a20a2 55f2582
+Author: Christian Clausen <maxclausen@gmail.com>
+Date:   Fri Nov 12 15:08:19 2021 +0100
+
+    Merge pull request #310 from eficode-academy/naesheim-patch-2
+    
+    Use restore for undoing changes
+
+[33mcommit 55f2582af8d6707343eff10234538096b7f4880f[m[33m ([m[1;31morigin/naesheim-patch-2[m[33m)[m
+Merge: d3b21b7 08a20a2
+Author: Christian Clausen <maxclausen@gmail.com>
+Date:   Fri Nov 12 11:19:08 2021 +0100
+
+    Merge branch 'master' into naesheim-patch-2
+
+[33mcommit 08a20a272a6b03a8fce1d527a400f53d43a5e82b[m
+Author: Jan Krag <jan.krag@eficode.com>
+Date:   Wed Nov 10 16:19:36 2021 +0100
+
+    Add a comment about feature/uppercase
+    
+    It is not obvious to beginners that `feature/uppercase` is a legal branch name and that this is what the exercise actually suggest,
+    so I added a comment to clarify this.
+
+[33mcommit d3b21b7f10b15828ec2ca14e4037750c6433ddc8[m
+Author: Hans Georg Næsheim <hg.nesheim@gmail.com>
+Date:   Fri Nov 5 11:39:07 2021 +0100
+
+    Update README.md
+
+[33mcommit 160094cc3cb1aadfb5139a25755ddf3d5995b59f[m
+Author: Hans Georg Næsheim <hg.nesheim@gmail.com>
+Date:   Thu Nov 4 11:39:16 2021 +0100
+
+    Update README.md
+    
+    In the training the students learn multiple ways of restoring a file. Both checkout and reset is fine alternatives, but I think restore is the most accurate command for the job. Both checkout and reset also has other purposes where their use makes more sense. For instance reset is used whenever you want to move HEAD.
+
+[33mcommit 02d104345060b37565550f77c2bce06ce5738ef5[m[33m ([m[1;33mtag: 0.3.0[m[33m)[m
+Author: Jan Krag <jan.krag@eficode.com>
+Date:   Tue Oct 26 16:09:57 2021 +0200
+
+    Update to use git switch instead of git checkout
+    
+    The new commands `git switch`and `git restore` were introduced
+    in 2.23 back in August 2019, and are much cleaner than the
+    old `git checkout`, so I believe that we
+    should be teaching the new way, not the old.
+    
+    While `git switch` and `git restore` are in principal still marked as
+    experimental in the documentation, they are here to stay.
+    Even output from commands like git status,
+    have gone away from suggesting `git checkout`.
+    
+    This commit goes through all the README files and makes appropriate
+    changes to recomend `git switch` instead of `git checkout`
+    (and `git switch -c` instead of `git checkout -b`)
+    
+    The actual setup scripts are still left untouched for maximum compatablility.
+    If you have e.g. participants in a training using very old Git versions,
+    it is still a lot easier to tell them to use `git checkout`
+    when `git switch`is mentioned,
+    than it is to debug scripts that are failing miserably.
+
+[33mcommit 8939fd0ac265ea840f2cbd8a0762cc26d72cbbaa[m
+Author: Jan Krag <jan.krag@eficode.com>
+Date:   Tue Oct 26 16:29:35 2021 +0200
+
+    Cleaned up markdown in README files
+    
+    Mostly fixing markdown-lint errors
+
+[33mcommit 92ffd7a8bc0b1f9061c86fb7ce71e799c0b6f48c[m
+Author: Bjarne Kjær <bjarne.priebe@gmail.com>
+Date:   Tue Aug 10 10:31:53 2021 +0200
+
+    add git switch to exercise basic-branching
+
+[33mcommit ed2250f26fbbe3355e5b7f3416195f128bfce44f[m
+Author: zanderhavgaard <zander@havgaard.dk>
+Date:   Fri Mar 26 14:58:17 2021 +0100
+
+    Add GH action job with matrix of git versions
+
+[33mcommit 51ab543a31713dc5f19fa1c78a312a3b6bcb7f13[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Fri Mar 26 13:29:28 2021 +0100
+
+    Test on both bash and zsh
+    
+    - Allow control of which shell is used in test-all script
+    - Add job to CI Action that tests on Zsh on mac
+    - Cleanup GH actions naming & remove redundant Docker based zsh job
+    
+    Co-author: @zanderhavgaard
+
+[33mcommit cbea88ced6e44dc3b8c35fa391ca3b7c9168fe44[m
+Author: zanderhavgaard <zander@havgaard.dk>
+Date:   Fri Mar 26 11:57:59 2021 +0100
+
+    Add comment on cleaning up test artifacts
+
+[33mcommit 360fcda6f195bcf0b6952745b4e7c20e1648196e[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Mon Mar 15 16:35:12 2021 +0100
+
+    Maybe setting user.name & email globally will fix
+
+[33mcommit 294e2ef6bf25162e991656c6ab061e0160929425[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Mon Mar 15 16:33:04 2021 +0100
+
+    Set user name & email in pipeline
+
+[33mcommit 7f87ffaa074bb6182e44dcf8710d33cf43056e33[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Fri Mar 12 14:44:30 2021 +0100
+
+    Control default branch & avoid warning about this
+    
+    Since Git 2.28, caling git init will print out a long'ish warning
+    strongly recommending to set init.defaultBranch in your global config.
+    While this warning might be good in "real life" it is unnecessarily
+    hostile to beginners, and also very verbose.
+    
+    The same version of Git introduced:
+    
+     --initial-branch=<branch-name>
+    
+     on git init, but using this would not be backwards compatible for
+    people using git < 2.28.
+    So I ame up with the solution of setting the new init.defaultBranch config
+    inline whenever calling git init.
+    
+    In (nearly) all the .sh scripts, I refer to a $DEFAULT_BRANCH variable
+    set in utils.sh that is sourced in (nearly) all setup scripts.
+    
+    For the PowerShell scripts, there isn't really a shared utils script
+    the same way, so those are currently hardcoded to master, but easy to
+    change for someone with more PS knowledge.
+
+[33mcommit bfafc0443b6196bbb0cf556b9f8a1d31ae1b8896[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Mon Mar 15 16:15:14 2021 +0100
+
+    Run test-all.sh in pipeline
+    
+    For now, this only changes what is run in the bash tests on ubuntu & mac
+    
+    We need to addres the testing in ZSH seperately,
+    as this is done in Docker
+
+[33mcommit 67af4d0a8478e198a4fe73716ccb59c6c788b163[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Mon Mar 15 16:05:56 2021 +0100
+
+    Count & report no. of failed tests
+
+[33mcommit 6f1af22057154727f28c1ef53cffebd49dff891d[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Mon Mar 15 15:50:10 2021 +0100
+
+    ShellCheck linting improvements
+
+[33mcommit 4fc9748a34becdabedbf492666f317c0bf2a62f6[m
+Author: Mads Jensen <maj@praqma.net>
+Date:   Mon Mar 15 14:21:40 2021 +0100
+
+    Use a function
+
+[33mcommit a6672e353a12b4c1e6ffebc66d670fafa97cbe84[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Fri Mar 12 12:28:57 2021 +0100
+
+    Make the test.sh script actually fail!
+    
+    The test.sh has been rewritten to use the new test_setup.sh
+    and thus actually causes a non-zero exit on failure.
+
+[33mcommit f6a64f82fec1d0f26289714d7fe9fceccc2a2f8e[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Fri Mar 12 12:26:38 2021 +0100
+
+    Run all tests in lexicographical order
+    
+    Better readability, when test output is listed in same order
+    as in file system and on GitHub :-)
+
+[33mcommit 3527832baea8cf8a268679ed8ab9a6ae498540f8[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Fri Mar 12 12:02:19 2021 +0100
+
+    Add feature to test all kata setup.sh scripts
+    
+    ./utils/test/test_setup.sh can be used to test a single kata
+    Run it from the kata folder as:
+    ../utils/test/test_setup.sh
+    
+    To test all katas, run ./test-all.sh from the root folder.
+    
+    This commit also includes a few bug-fixes that were caught by the test.
+    In reverted-merge there is a merge operation in the setup that causes a
+    conflict on purpose, and fixes it.
+    I "wrapped" that in an `|| true` to make it not fail the test script.
+
+[33mcommit 0a29db0b6bd31011a47bd7a27c322e535c8487f3[m
+Author: Sofus Albertsen <sofusalbertsen@users.noreply.github.com>
+Date:   Thu Mar 11 09:57:49 2021 +0100
+
+    adding a new step for basic revert exercise (#296)
+
+[33mcommit 4650e5ce201058ffa1e6562afca48abd25aa49c1[m
+Author: Sofus Albertsen <sofusalbertsen@users.noreply.github.com>
+Date:   Wed Feb 24 09:35:04 2021 +0100
+
+    Added a step to 3-way-merge (#295)
+
+[33mcommit 40fefdb7fe339f7eece71f90930b20f57cb1766f[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Mon Dec 14 20:50:42 2020 +0100
+
+    Add fake remote to advanced-rebase-interactive
+
+[33mcommit 9bff63760fe26d659e8edebf2acf55986361a200[m[33m ([m[1;33mtag: 0.2.0[m[33m)[m
+Author: P-A Lundblad <pa@praqma.net>
+Date:   Fri Nov 6 09:23:33 2020 +0100
+
+    Clarify description of aliases
+    
+    Add part on reduce the risk for typos
+    Add that alias can also be on a system level
+
+[33mcommit 03f8a835d4d9675adff8069e469b7be5bf816899[m
+Author: Jan Krag <jak@praqma.net>
+Date:   Wed Sep 30 16:22:06 2020 +0200
+
+    Add --global to unset command
+
+[33mcommit 6c8746e0f30b2ea9f8b0cea389e009a2f6620e29[m
+Author: P-A Lundblad <pa@praqma.net>
+Date:   Wed Sep 30 15:55:32 2020 +0200
+
+    Add kata on aliases
+
+[33mcommit bb52781bab0361d33127ff2e4eee62c775012ac8[m
+Author: Thierry Lacour <thi@praqma.net>
+Date:   Fri Oct 9 11:07:22 2020 +0200
+
+    Fix restore kata title
+
+[33mcommit dde744a90a77bb0c9bc60b99d6a9e90cb89857ff[m
+Author: Thierry Lacour <thi@praqma.net>
+Date:   Wed Sep 30 16:21:22 2020 +0200
+
+    Add restore from history to restore kata
+
+[33mcommit b99b6821cc38c4949f162bd7b7e4c8c4140cec2c[m
+Author: Thierry Lacour <thi@praqma.net>
+Date:   Wed Sep 30 16:05:28 2020 +0200
+
+    Add restore kata
+
+[33mcommit 3004959c79e0f83e39833c9869daed7e77789d86[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Fri Oct 30 10:16:21 2020 +0100
+
+    [Cherry-pick] Fixed some wordings
+
+[33mcommit 4003230fc5e089ce725bab6748db8f2701d52b24[m
+Author: kardelio <kardeliogithub@outlook.com>
+Date:   Fri Oct 16 14:45:53 2020 +0200
+
+    Added the git cherry pick task
+
+[33mcommit 8e82726c29b261da121cdd9191ebe0a8f692491e[m[33m ([m[1;33mtag: 0.1.1[m[33m)[m
+Author: Thierry Lacour <thi@praqma.net>
+Date:   Fri Sep 25 15:26:03 2020 +0200
+
+    Fix tag in release asset name
+
+[33mcommit fbd782d53eeb3a79358cdde392bc06589d1d89a0[m
+Author: Thierry Lacour <thi@praqma.net>
+Date:   Fri Sep 25 14:06:00 2020 +0200
+
+    Fix indentation issue in publish.yml
+
+[33mcommit 4e19fc0adeef89c5098fecd762623f1e65d84a48[m
+Author: Thierry Lacour <thi@praqma.net>
+Date:   Fri Sep 25 13:45:04 2020 +0200
+
+    Change archive publising to a GH Release
+
+[33mcommit b17be5e5d005dced917123905b3fe8cce24edd20[m
+Author: Thierry Lacour <thi@praqma.net>
+Date:   Fri Sep 25 13:19:09 2020 +0200
+
+    Add publish workflow
+    
+    This is a precursor to our upcoming release pipeline, where the katas are made accessible without cloning them down, causing the dreaded nested git repo confusion.
+
+[33mcommit cc38a4a07a6281c21e4d059e652dc86505b68bce[m
+Author: Claus Schneider (Praqma) <cls@praqma.net>
+Date:   Thu Apr 16 14:34:38 2020 +0200
+
+    Final proposal for subtree git-katas
+    
+    Co-authored-by: Mads Jensen <mads.jensen@eficode.com>
+
+[33mcommit 122f4cf0649c79cc74b531764ce4ec4f2a33aeb6[m
+Author: EfiGaja <gaja.kochaniewicz@eficode.com>
+Date:   Fri Sep 11 15:46:41 2020 +0300
+
+    Add an explanation for commands to run with amend.
+
+[33mcommit fe76b80e4dcee2b5453f88187e5ed4e53f341547[m
+Author: EfiGaja <gaja.kochaniewicz@eficode.com>
+Date:   Fri Sep 11 13:54:43 2020 +0300
+
+    Add commands that show contents of commits to better illustrate amending via adding a new file.
+
+[33mcommit 1d3fdd6ffa76c5220706ad562b65ba5d1aa2d5bc[m
+Author: bothzoli <bothzoli@gmail.com>
+Date:   Sat Sep 5 13:48:15 2020 +0200
+
+    Fix PR review findings
+
+[33mcommit b05ba04591b1d9294a8b94f44434f6f662f36c66[m
+Author: bothzoli <bothzoli@gmail.com>
+Date:   Thu Jul 2 09:54:40 2020 +0200
+
+    Create change author kata
+    
+    With this kata you can practice what does it take to change the authors
+    of already committed and pushed commits.
+    The idea sprang from a personal experience.
+
+[33mcommit face7c1d652f87d791486f246ff326682d17bb07[m
+Author: Thierry Lacour <thierry.lacour@eficode.com>
+Date:   Tue Sep 8 12:23:35 2020 +0200
+
+    Add VS Code as a suggested editor
+
+[33mcommit 74b71e0d0f66e2203dbbb7d49714eb586dadc98c[m
+Author: Dan Grøndahl Glavind <dan.glavind@eficode.com>
+Date:   Tue Sep 8 21:15:46 2020 +0200
+
+    Disable GPG signing of commits locally during setup
+    
+    As signing might be enabled globally, commits from setup scripts local user
+    should happen without signing.
+
+[33mcommit 58ea1c240aac9173fca6b7e23ff70d84bdf35abb[m
+Author: Joachim Bülow <43139346+joachimbulow@users.noreply.github.com>
+Date:   Wed Aug 5 13:56:43 2020 +0200
+
+    Update README.md
+
+[33mcommit 78fc4d14f38407b16d6f384407ed63d42bd8a6e7[m
+Author: Christoffer Nissen <christoffer.nissen@eficode.com>
+Date:   Wed Aug 5 14:09:17 2020 +0200
+
+    added explanatory text to ffmerge README
+
+[33mcommit ad2bf25b18fd1d0b8392395d503f34e5fca811e1[m
+Author: Sofus Albertsen <soa@praqma.com>
+Date:   Wed Aug 5 15:09:52 2020 +0200
+
+    Fix errors in actions CI file
+
+[33mcommit 37d36504fef18d5b91f4f49aec51db9b4e7a955e[m
+Author: Sofus Albertsen <soa@praqma.com>
+Date:   Wed Aug 5 15:07:30 2020 +0200
+
+    Complete zsh test
+
+[33mcommit ceb99e7aaf68cec4bfd7c23d33cc8aea1ab78c4b[m
+Author: Sofus Albertsen <soa@praqma.com>
+Date:   Wed Aug 5 13:22:05 2020 +0200
+
+    adding Dockerfile with zsh for regression test
+
+[33mcommit 5321a4863db500d028071018c296d5b1c71fb7d0[m
+Author: Sofus Albertsen <sofusalbertsen@users.noreply.github.com>
+Date:   Wed Aug 5 11:34:39 2020 +0200
+
+    FIX problem that kills shell if not bash (#268)
+    
+    Co-authored-by: Jan Krag <jankrag@gmail.com>
+
+[33mcommit 98d531e12c8890fd5e0527923730fca9c06ad199[m
+Author: bothzoli <bothzoli@gmail.com>
+Date:   Wed Jun 10 07:51:06 2020 +0200
+
+    Further improve error handling in setup.ps1
+    
+    Resolves: #243
+
+[33mcommit b44b2c9cd19bc10f4ad7121659c8a71478421b8c[m
+Author: bothzoli <bothzoli@gmail.com>
+Date:   Tue Jun 9 14:41:15 2020 +0200
+
+    Gracefully fail when removing exercises folder
+    
+    If for whatever reason the `exercises` folder cannot be removed the
+    `setup.ps1` script did not stop but continue running potentionally
+    spilling a lot of error messages.
+    With this change the failing deletion will stop the setup script.
+    
+    Resolves: #243
+
+[33mcommit c70be832f3c02582ed3b587b282aa1c034f5dc1b[m
+Author: git-katas trainer bot <git-katas@example.com>
+Date:   Sat Jun 13 00:04:31 2020 +0200
+
+    Update README.md for bisect and merge-driver
+
+[33mcommit 51d8dd304f54b3ebf25be0ef7a32af57cc93a2ce[m
+Author: git-katas trainer bot <git-katas@example.com>
+Date:   Fri Jun 12 23:59:45 2020 +0200
+
+    Add setup.ps1 and verify.ps1 for rebase-exec kata
+    
+    Related issue: #261
+
+[33mcommit 842eef4b9c4dfd9188975bbc4bf6efca4e856c1f[m
+Author: git-katas trainer bot <git-katas@example.com>
+Date:   Fri Jun 12 23:38:47 2020 +0200
+
+    Add setup.ps1 for pre-push kata
+
+[33mcommit d6599608304f1926306401949f0002ad6d601d00[m
+Author: git-katas trainer bot <git-katas@example.com>
+Date:   Fri Jun 12 23:26:07 2020 +0200
+
+    Update README.md for git-attributes and git-tag
+    
+    Add `setup.ps1` to the README.md files.
+
+[33mcommit 82d1f0cc6c0418429d119d820ac262cade4be8fe[m
+Author: git-katas trainer bot <git-katas@example.com>
+Date:   Fri Jun 12 23:25:21 2020 +0200
+
+    Add setup.ps1 for master-based-workflow kata
+    
+    Related issue: #261
+
+[33mcommit c42c13b944fa8c447532908d33cff3e1037753b7[m
+Author: git-katas trainer bot <git-katas@example.com>
+Date:   Fri Jun 12 23:00:48 2020 +0200
+
+    Add setup.ps1 for git-tag kata
+    
+    Related issue: #261
+
+[33mcommit 081b82cd66839c129aff18a8a93daba22cf66264[m
+Author: git-katas trainer bot <git-katas@example.com>
+Date:   Fri Jun 12 22:51:47 2020 +0200
+
+    Add setup.ps1 for git-attributes kata
+    
+    Related issue: #261
+
+[33mcommit a7e39800b99d60e580ebe98825bc3403f5ecea2f[m
+Author: git-katas trainer bot <git-katas@example.com>
+Date:   Wed Jun 10 07:47:53 2020 +0200
+
+    Add file ending new lines
+
+[33mcommit 0d4aca41b8e7ecdf70cbbb4d109f95b3685f5c2f[m
+Author: git-katas trainer bot <git-katas@example.com>
+Date:   Wed Jun 10 07:45:12 2020 +0200
+
+    Create setup script for merge-driver kata
+    
+    Resolves: #164
+
+[33mcommit 3054846e125c61a11042536c970c6c75be48ad0e[m
+Author: git-katas trainer bot <git-katas@example.com>
+Date:   Wed Jun 10 07:26:44 2020 +0200
+
+    Create setup and verify scripts for bisect kata
+    
+    Resolves: #164
+
+[33mcommit 393c79de962d26877e1d2350abafadc3500c5645[m
+Author: bothzoli <bothzoli@gmail.com>
+Date:   Wed Jul 1 09:06:20 2020 +0200
+
+    Create GitHub actions CI pipeline for running test scripts (#265)
+    
+    * Create CI pipeline running test scripts
+    
+    * Fix CI definition
+    
+    * Add execute access to test.sh
+    
+    * Fix CI definition
+    
+    * Make test.ps1 go through all exercises
+    
+    * Add git user for submodules kata
+    
+    * Add git user for submodules kata
+    
+    * Fix setup.ps1 for submodules kata
+    
+    * Add MacOS to GitHub actions jobs
+
+[33mcommit 0c5870e4122d105682116e289354b13a2c9908b4[m
+Author: Frank Theile <ftheile@grundfos.com>
+Date:   Mon Jun 8 08:36:53 2020 +0200
+
+    Fix setup scripts of `submodule` kata
+    
+    - Use parts of the infrastructure in `../utils/`
+    - Sourcing (`. setup.sh`) or executing (`./setup.sh`) the script now both works
+    - Don't try to be smarter than the average setup.sh script if it doesn't work anyway...
+
+[33mcommit f5e0af576f96fded73dfd12a3009c378aabe924b[m
+Author: Niels Kristian Jensen @ MAN <nielsk.jensen@man-es.com>
+Date:   Thu Jun 11 16:14:10 2020 +0200
+
+    Prevent weird errors when running setup.sh using e.g. bash setup-sh instead of source setup.sh
+
+[33mcommit 2905cdb3d5ddc21a2ad822ed4b48883bb1b15f96[m
+Author: Frank Theile <ftheile@grundfos.com>
+Date:   Tue Jun 2 11:53:31 2020 +0200
+
+    First try to rework "Configure Git" kata
+    
+    - Start with installation, mention to open Git Bash one time for
+      further cfg. steps
+    - Sub-chapter about SSH authentication
+
+[33mcommit faa1282a23da99a43fa4f8b2c5420c8a404cbdea[m
+Author: Frank Theile <ftheile@grundfos.com>
+Date:   Tue Jun 2 11:25:31 2020 +0200
+
+    Consistently write 'Git' if talking about the tool
+    
+    - Use 'Git' for the tool name
+    - Use 'git' as the command
+
+[33mcommit 8e32a28f1b4da45353cf7a410882591c75e1f25f[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Wed Jun 3 07:07:15 2020 +0200
+
+    [Master Workflow] Fix Autor typo
+
+[33mcommit e6b607b3e0eddbabd7b70fb38c8cb0d1748cd8a7[m
+Author: Thierry Lacour <thi@praqma.net>
+Date:   Wed May 13 13:35:44 2020 +0200
+
+    Add +x rights to pre-push setup.sh
+
+[33mcommit 3050dccc896443f2094feff9f2b3dde00cf6fe27[m
+Author: Thierry Lacour <thi@praqma.net>
+Date:   Wed May 13 13:01:01 2020 +0200
+
+    Consistently use dashes in utils function names
+    
+    Fix #248
+
+[33mcommit 40c98abb768ba930fd84605a3e5ec454f8b5bf68[m
+Author: Sofus Albertsen <soa@praqma.com>
+Date:   Mon May 25 12:11:00 2020 +0200
+
+    Fixed language and content for config-git
+
+[33mcommit 80e6b2e97b125e650205595fabf01a83b45f94ed[m
+Author: Sofus Albertsen <soa@praqma.com>
+Date:   Mon May 25 11:16:33 2020 +0200
+
+    Fleshed out section one of config-git.md
+
+[33mcommit e495745be49836584e911698665b701ef03b3173[m
+Author: Frank Theile <ftheile@grundfos.com>
+Date:   Thu May 14 10:24:48 2020 +0200
+
+    Add fake author in master-based-workflow exercise
+    
+    To easily distinguish own commits from the "virtual" collaborator's
+    ones.
+
+[33mcommit b8c42204692d82068bef99ddbbf27e8ef691439f[m
+Author: Jan Krag <jak@praqma.net>
+Date:   Wed May 13 16:41:12 2020 +0200
+
+    Fix wording in new exercise description
+
+[33mcommit 2208f3fbf3e7d6d1f953d41d26130527d5cb4104[m
+Author: git-katas trainer bot <git-katas@example.com>
+Date:   Wed May 13 14:04:58 2020 +0200
+
+    Add master based workflow kata
+
+[33mcommit 74f943106572fce5777790e82c91c4c096ecc81f[m
+Author: git-katas trainer bot <git-katas@example.com>
+Date:   Wed May 6 13:19:46 2020 +0200
+
+    Small typos in ignore kata README
+
+[33mcommit d7fe47b1e220cd20bde15392b7711e8f0c22df59[m
+Author: git-katas trainer bot <git-katas@example.com>
+Date:   Wed May 6 12:50:06 2020 +0200
+
+        Elaborate save my commit
+
+[33mcommit df4f7470372e22931907a0c92331e9f8c342656e[m
+Author: git-katas trainer bot <git-katas@example.com>
+Date:   Wed May 6 13:44:19 2020 +0200
+
+    use local remote for prepush kata
+
+[33mcommit 2f70997a61868db1afcad9b1dc4beee654efe5ce[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Wed Apr 29 14:00:17 2020 +0200
+
+    Elaborate and bugfix on rebase-exec
+    
+    close #187
+
+[33mcommit afecd6355eef8ed16f57dbc019604cf7d93580d1[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Wed Apr 29 12:32:49 2020 +0200
+
+    Simplify basic revert
+    
+    close #177
+
+[33mcommit 50cea3879e63cbb3e65a000b4598e3cc06491b1e[m
+Author: Frank Theile <ftheile@grundfos.com>
+Date:   Thu Apr 23 08:37:10 2020 +0200
+
+    configure-git README.md: mention private SSH key file
+    
+    Mention files corresponding to public/private key.
+
+[33mcommit 01528b67053659000d27f66b17a29aebd972de83[m
+Author: Frank Theile <ftheile@grundfos.com>
+Date:   Wed Apr 22 07:27:58 2020 +0200
+
+     advanced-rebase-interactive README: be consistent with cmdline args
+    
+    Use `--interactive` as in previous step.
+
+[33mcommit da71cd7cc821050107dc41c5a5a4fbae40564bfc[m
+Merge: bba8d07 de28d2b
+Author: Sofus Albertsen <sofusalbertsen@users.noreply.github.com>
+Date:   Thu Apr 16 19:21:02 2020 +0200
+
+    Merge pull request #236 from praqma-training/git-katas-unset-e
+    
+    unset error option at the end
+
+[33mcommit de28d2baf8d752f775f99f5bc9a74948f25bd58d[m
+Author: Sudheer Kumar Chiluveri <Sudheer.Chiluveri@gmail.com>
+Date:   Thu Apr 16 19:51:43 2020 +0300
+
+    unset error option at the end
+
+[33mcommit bba8d070929cc96e63a7737a6d96252d33a111e2[m
+Merge: 8c48cc7 eb81702
+Author: Jan Krag <jak@praqma.net>
+Date:   Wed Apr 15 12:28:48 2020 +0200
+
+    Merge pull request #235 from praqma-training/git-katas-issue-59
+    
+    changed how shell script could be sourced in katas
+
+[33mcommit 8c48cc709ef8f01ea676588ab98708fdc5f31663[m
+Author: Sudheer Kumar Chiluveri <Sudheer.Chiluveri@gmail.com>
+Date:   Wed Apr 8 14:53:26 2020 +0300
+
+    helper functions to set and unset local user for training bot commits. Updated setup.sh instructions in few katas to take new effect in place.
+
+[33mcommit e2166a926aed9bda638de79b9a7ceebe56cac909[m
+Author: Sudheer Kumar Chiluveri <Sudheer.Chiluveri@gmail.com>
+Date:   Mon Apr 6 16:56:20 2020 +0300
+
+    chaning email address to suggested
+
+[33mcommit 4e4039a6d9139d13e537e1000b028c32e141185d[m
+Author: Sudheer Kumar Chiluveri <Sudheer.Chiluveri@gmail.com>
+Date:   Thu Apr 2 15:58:34 2020 +0300
+
+    updating a email address to look like one.
+
+[33mcommit 17ebe6a15d3780b9490c2aec9222d7a69a5d5cf9[m
+Author: Sudheer Kumar Chiluveri <Sudheer.Chiluveri@gmail.com>
+Date:   Wed Apr 1 17:17:14 2020 +0300
+
+    Set local git user name and email after initializing exercise repo (to distinguish commits).
+
+[33mcommit ee47b7dcb3321d46a1f9d91708e39e4c4446694f[m
+Merge: fbb5185 c85f03b
+Author: Jan Krag <jak@praqma.net>
+Date:   Thu Apr 9 10:56:09 2020 +0200
+
+    Merge pull request #234 from praqma-training/git-katas-issue-146
+    
+    Updating git cheatsheet
+
+[33mcommit eb81702efb61626e8fd5ce8376d63a9ab1ea62ae[m
+Author: Sudheer Kumar Chiluveri <Sudheer.Chiluveri@gmail.com>
+Date:   Thu Apr 9 11:18:25 2020 +0300
+
+    changed how shell script could be sourced in katas
+
+[33mcommit c85f03baf1639c169818b74fc88f3bd24a9e1f60[m
+Author: Sudheer Kumar Chiluveri <Sudheer.Chiluveri@gmail.com>
+Date:   Wed Apr 8 14:59:58 2020 +0300
+
+    clearing the description to be precise
+
+[33mcommit f7d084a64c8a48fb3c861fdff941f1b69c592289[m
+Author: Sudheer Kumar Chiluveri <Sudheer.Chiluveri@gmail.com>
+Date:   Mon Apr 6 11:42:18 2020 +0300
+
+    correction to wrong description of 'git reset'
+
+[33mcommit 574ee38713e5bcf5ae850a5941643220afdfe50b[m
+Author: Sudheer Kumar Chiluveri <Sudheer.Chiluveri@gmail.com>
+Date:   Thu Apr 2 17:41:10 2020 +0300
+
+    clarified pull-request comments
+
+[33mcommit e3aab3e2443349ce0a9970af34371a97605bc6d7[m
+Author: Sudheer Kumar Chiluveri <Sudheer.Chiluveri@gmail.com>
+Date:   Thu Apr 2 15:00:59 2020 +0300
+
+    Updating git cheatsheet
+
+[33mcommit fbb518564fbfbc6d404093d58283abc372ff0b9a[m
+Author: Frank Theile <ftheile@grundfos.com>
+Date:   Mon Mar 23 15:31:26 2020 +0100
+
+    Update README.md
+    
+    `git show <commit id>` was very helpful to me when I did this kata & and later on the job
+
+[33mcommit 335e019ac148297bd938f137ea9c7cf617c07576[m
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Thu Feb 13 11:10:55 2020 +0100
+
+    Clean up unused trainer-notes.md
+
+[33mcommit c1514f22ebb31280d26b3062134a7066c59df737[m
+Author: Alex Blanc <alexandre_blanc@yahoo.fr>
+Date:   Sat Oct 19 17:38:32 2019 +0200
+
+    Add kata Rebase Interactive with autosquash
+
+[33mcommit 032a8fcdef22a53f123f914a8b7b2d7d87cdd2e7[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Mon Feb 10 14:35:27 2020 +0100
+
+    Fix typos in submodule README
+
+[33mcommit 262c4781da478c684fa2252cfbf7aa5bb6b008c3[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Thu Dec 5 11:17:07 2019 +0100
+
+    Fix three typos
+
+[33mcommit 1e07423dc1ab079231f37d2113e5788310d90c9d[m
+Author: Michael Ingeman-Nielsen <min@praqma.net>
+Date:   Mon Nov 25 01:03:48 2019 +0100
+
+    Expand  on  submodules kata
+
+[33mcommit 1ef8902e943da065980a6b7415a9b98af2a4bd4d[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Mon Feb 10 13:11:56 2020 +0100
+
+    Use explicit numbering
+
+[33mcommit dbfccc8864f9431a93180ec168fde8d0fa299267[m
+Author: Brent Clark <clark@sedsystems.ca>
+Date:   Wed Jan 1 15:27:45 2020 -0600
+
+    Added pointer to Overview also as Learning Path
+    
+    With change to Overview file, it also contains a learning path.
+
+[33mcommit 1848cafa593fc638c4197a06612cf2010a8dc334[m
+Author: Brent Clark <clark@sedsystems.ca>
+Date:   Thu Aug 29 07:03:56 2019 -0600
+
+    Reordered katas on Overiew and added missing ones
+    
+    Also grouped into sections in a suggested order.
+
+[33mcommit 03298e13146a4879af1d5eb03702c0f12241f9c1[m
+Author: Fuchen Shi <44103628+shifuchen98@users.noreply.github.com>
+Date:   Thu Jan 23 16:12:39 2020 -0800
+
+    fix: wording
+
+[33mcommit f8712d5c4df74fa0d49c8cc9ba3b1a5b2c571072[m
+Author: Frank Theile <ftheile@grundfos.com>
+Date:   Mon Dec 9 10:30:13 2019 +0100
+
+    Add missing shebang in squashing/setup.sh
+    
+    `setup.sh` should be executable according to the instructions given in README.md
+
+[33mcommit e060df632bf4799da9aa1c0092640563acf84588[m
+Author: Adam Matan <adamatan@users.noreply.github.com>
+Date:   Wed Dec 4 07:46:31 2019 +0200
+
+    Word ordering
+
+[33mcommit 6ccb85882dc12fb0b26acd65bead2fc7da57a187[m
+Author: Frank Theile <ftheile@grundfos.com>
+Date:   Wed Nov 27 08:24:29 2019 +0100
+
+    Mention `less` in SHELL-BASICS.md
+    
+    Helpful alternative to `cat` for long files.
+
+[33mcommit f805e2ad3fe14cc8d3a4dcce2da50b50601d0ac7[m
+Author: Mads Jensen <maj@praqma.net>
+Date:   Fri Sep 13 13:18:28 2019 +0200
+
+    Added kata for .gitattributes
+
+[33mcommit 96690446d090d99146f9daf0497f06169e4e9141[m
+Author: Frank Theile <ftheile@grundfos.com>
+Date:   Mon Nov 25 13:33:47 2019 +0100
+
+    Simplify `git lol` alias
+    
+    `--oneline` is is a shorthand for `--pretty=oneline --abbrev-commit`, see git-log(1)
+
+[33mcommit 892d64f4ffb1031ff22847ef906d1f0083e7dfe5[m
+Author: Frank Theile <ftheile@grundfos.com>
+Date:   Mon Nov 25 13:58:22 2019 +0100
+
+    Fix link in squashing-README
+
+[33mcommit 1f9ead1c32dbf5bdd9a4cc45ae94a0d9fc92298e[m
+Author: Brent Clark <clark@sedsystems.ca>
+Date:   Fri Oct 18 16:14:28 2019 -0600
+
+    Minor improvements to submodules/README.md
+    
+    * Made more standard.
+    * Added some explanatory text about why steps are being done.
+    * Replaced reference to `git submodule status` with
+      `git submodule foreach 'git status'`, because it isn't obvious what the
+      output of `git submodule status` means
+    * Not sure why we are making a second clone so put a TBD.
+
+[33mcommit 956ac8dceaacad6586c6fba4e883b42387e90cb3[m
+Author: Brent Clark <clark@sedsystems.ca>
+Date:   Wed Oct 30 08:26:50 2019 -0600
+
+    Removed reference to 'git rev-pars'
+
+[33mcommit 9313b5a8444dcc42a2da3582a9cfa7dc7de034aa[m
+Author: Brent Clark <clark@sedsystems.ca>
+Date:   Thu Oct 17 07:07:23 2019 -0600
+
+    Improved squashing/README.md
+    
+    * Made section names more consistent with other READMEs
+    * How to clean up the \n's wasn't clear so made it it own step and
+    added to Useful commands
+    * Added Further information on how to write Git commit messages
+    * Left in question on git rev-parse. Why this is useful should be made
+    clearer or the command deleted.
+
+[33mcommit eb6c517e9cc1fef19b2c4b7b1995994bacff4a9e[m
+Author: Mads Jensen <maj@praqma.net>
+Date:   Tue Sep 17 12:12:30 2019 +0200
+
+    Added kata about git tags.
+
+[33mcommit 451a2b02b9dfe6e0c9a25fa936ddbedc16f02c90[m
+Author: Frank Theile <frank.theile@web.de>
+Date:   Thu Oct 31 10:36:01 2019 +0100
+
+    Update README.md
+    
+    Fix a typo
+
+[33mcommit 5ccbc50231825d763127af09aa9db76186a986a3[m
+Author: Brent Clark <clark@sedsystems.ca>
+Date:   Tue Oct 29 14:34:12 2019 -0600
+
+    Changed "git" to "Git" in detached-head/README
+
+[33mcommit f94e03342d85c2a1deb946a530457d073f1fd74f[m
+Author: Brent Clark <clark@sedsystems.ca>
+Date:   Sat Oct 19 15:39:19 2019 -0600
+
+    Added to the task detached-head/README.
+    
+    * Made The task more standard and added some detail.
+    * Added useful commands.
+
+[33mcommit 1b921a4fb1238ae593d98a760c3bc25d274ea02f[m
+Author: Brent Clark <clark@sedsystems.ca>
+Date:   Tue Oct 15 08:18:51 2019 -0600
+
+    Added The task in save-my-commit/README.md
+    
+    Updated the README to be more similar to others.
+    Made The task slightly clearer and added some hints (via googling)
+
+[33mcommit c9df4cad3a5cfb762807db82c709aed5c7404350[m
+Author: Brent Clark <clark@sedsystems.ca>
+Date:   Mon Oct 14 16:43:23 2019 -0600
+
+    Added to The task in reverted-merge/README.md
+    
+    Added detail to The task and added to Useful commands.
+
+[33mcommit e52649c4c24567ec3a153433254b74a43fecd4e7[m
+Author: Brent Clark <clark@sedsystems.ca>
+Date:   Thu Aug 29 06:46:14 2019 -0600
+
+    Added to The task in merge-conflict/README.md
+    
+    Added detailed steps to The tasks and updated the Relevant commands
+
+[33mcommit ac8f6c22019204a552bd33e87ddde20dedc6980a[m
+Author: Brent Clark <clark@sedsystems.ca>
+Date:   Wed Aug 28 10:13:58 2019 -0600
+
+    Added The task to commit-on-wrong-branch/README.md
+    
+    Also added Useful commands
+
+[33mcommit 2e29b3b6e44229aec13313e5b6b1cbefe50a0b91[m
+Author: Brent Clark <clark@sedsystems.ca>
+Date:   Wed Aug 28 08:05:10 2019 -0600
+
+    Added the task section to bad-commit/README.md
+    
+    Added a detailed the task section and added to useful commands.
+
+[33mcommit 66f5b2721cb51831941bbf1cf1d2172a7583f4e0[m
+Author: Brent Clark <clark@sedsystems.ca>
+Date:   Tue Aug 27 08:30:51 2019 -0600
+
+    Added useful commands and more to reset/README
+    
+    Added useful commands section and a further explanation section.
+
+[33mcommit 8100f969799270986fb578c54a6b4ed237515c9d[m
+Author: Alex Blanc <alexandre_blanc@yahoo.fr>
+Date:   Sun Oct 13 12:12:54 2019 +0200
+
+    Add clone step to README Gif
+
+[33mcommit ee01d2c8e03b2b7783d5a4efabb7c73ab2794380[m
+Author: Brent Clark <clark@sedsystems.ca>
+Date:   Tue Aug 27 07:11:34 2019 -0600
+
+    Added to the task in reorder-the-history/README.
+    
+    Also added to useful commands.
+
+[33mcommit f56e566bf6af30a7eb514ccd0926fd348958fd2f[m
+Author: Brent Clark <clark@sedsystems.ca>
+Date:   Mon Aug 26 09:33:43 2019 -0600
+
+    Added useful commands section to amend/README.
+
+[33mcommit 3b9e5eac221f1f9be323007bd1f74f6455f92013[m
+Author: Brent Clark <clark@sedsystems.ca>
+Date:   Mon Aug 26 09:24:26 2019 -0600
+
+    Added to Merge Mergesort README
+    
+    Added to the task and to the relevant commands
+
+[33mcommit 0f430e6e57d58c831a14abcd78b2658448925acb[m
+Author: Alex Blanc <alexandre_blanc@yahoo.fr>
+Date:   Sat Oct 12 17:20:11 2019 +0200
+
+    Use makerepo function
+
+[33mcommit 9e8ed9d7909a0fb6775a1ba4d3203330e4f26da6[m
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Fri Oct 11 10:49:04 2019 +0200
+
+    Set theme jekyll-theme-midnight
+
+[33mcommit 00a9e1719b9bde210aa30d0272f0d8ad3e3b2ef7[m
+Merge: 03a672f 59d5e43
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Thu Oct 10 20:15:24 2019 +0200
+
+    Merge pull request #201 from Natasha2001/master
+    
+    Adding introduction to github
+
+[33mcommit 03a672fe6272374fb32a3a5826d26365adfcf9a4[m
+Merge: e231eef 46c519b
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Wed Oct 9 15:44:06 2019 +0200
+
+    Merge pull request #202 from atombrella/rebase_source
+    
+    Fixed syntax error with shebang in rebase-branch kata script
+
+[33mcommit e231eefa14f27a24245c1e8fad217ccc497e72c8[m
+Merge: dfcb536 301f919
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Wed Oct 9 15:42:37 2019 +0200
+
+    Merge pull request #200 from atombrella/git_ignore_track_ignored
+    
+    Added exercise about excluding something from .gitignore
+
+[33mcommit dfcb53605fe3bc6147828ab633a68a1861d08489[m
+Merge: a5dbbc6 168599d
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Wed Oct 9 15:30:07 2019 +0200
+
+    Merge pull request #196 from brent-clark-SED-Sw-Mgr/add-to-basic-commits-readme
+    
+    Added more explanatory text to basic-commits/README
+
+[33mcommit a5dbbc68c20ea83e4e67e1fc41dc710098f03cdc[m
+Merge: 10df68a 10665da
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Wed Oct 9 15:23:00 2019 +0200
+
+    Merge pull request #193 from atombrella/git_attributes
+    
+    Added .gitattributes to make line endings consistent.
+
+[33mcommit 10665da0c904b23a66efd82185b76f17c71c376e[m
+Merge: aa5504a 10df68a
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Wed Oct 9 15:21:07 2019 +0200
+
+    Merge branch 'master' into git_attributes
+
+[33mcommit 10df68ad877629933dade831026fa374eb6a4808[m
+Merge: bf0be72 9b63379
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Wed Oct 9 15:19:54 2019 +0200
+
+    Merge pull request #192 from praqma-training/improve-rebase-exercise
+    
+    Improve rebase exercise
+
+[33mcommit 46c519bb80394ec29985661505e8734f8b47669f[m
+Author: Mads Jensen <maj@praqma.net>
+Date:   Tue Oct 8 15:53:28 2019 +0200
+
+    Added exec-flag to setup.sh script, and fixed syntax error with shebang.
+
+[33mcommit 59d5e436b0b7158ac8a6a49da69e851ac1b692c7[m
+Author: Natasha2001 <natashasee.2001@gmail.com>
+Date:   Fri Sep 27 13:51:10 2019 +0530
+
+    Introduction to github
+
+[33mcommit 301f9197eb61362a7f26d1cf58fb6af635cba8ed[m
+Author: Mads Jensen <maj@praqma.net>
+Date:   Mon Sep 23 15:07:40 2019 +0200
+
+    Added exercise about excluding something from .gitignore
+
+[33mcommit 168599dee8f5ba591e6bed773e5a8522e58c22ae[m
+Author: Brent Clark <clark@sedsystems.ca>
+Date:   Mon Aug 26 09:20:55 2019 -0600
+
+    Added more explanatory text to basic-commits/README
+
+[33mcommit aa5504aff9bdebdd06a0f9e93522f67e5a06fc0c[m
+Author: Mads Jensen <maj@praqma.net>
+Date:   Mon Sep 9 09:41:03 2019 +0200
+
+    Added .gitattributes to make line endings consistent.
+    
+    There was a mixture of both DOS and UNIX line endings in the files. The .gitattributes
+    file can serve as an example.
+
+[33mcommit bf0be72553c8df90b1e01d7d97d12959abfbf742[m
+Merge: edf1b33 5feeba2
+Author: Jan Krag <jak@praqma.net>
+Date:   Fri Sep 20 12:36:56 2019 +0200
+
+    Merge pull request #194 from atombrella/grammar_fixes
+    
+    Fixed a typo in reorder-the-history/README.md
+
+[33mcommit edf1b337fcc3dc28c74323500b9245ad283b2f5d[m
+Merge: ecf8776 b257ccd
+Author: Jan Krag <jak@praqma.net>
+Date:   Fri Sep 20 12:36:05 2019 +0200
+
+    Merge pull request #199 from atombrella/git_config_format
+    
+    Tweaked markdown in configure-git katas a bit.
+
+[33mcommit b257ccd9bd9e38b0a1ea5ec2a57e154ca0bee2b2[m
+Author: Mads Jensen <maj@praqma.net>
+Date:   Tue Sep 17 15:16:17 2019 +0200
+
+    Tweaked markdown in configure-git katas a bit.
+
+[33mcommit 5feeba222c6bb21d8a932cd3fa78c5da95e3cdf9[m
+Author: Mads Jensen <maj@praqma.net>
+Date:   Sun Sep 8 22:21:30 2019 +0200
+
+    Fixed a typo in reorder-the-history/README.md
+
+[33mcommit 9b6337954984e04eff80d19dc84ffbdd604deef6[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Tue Aug 27 10:59:50 2019 +0200
+
+    Change fake remote script to create bare repo
+    
+    Clean up new util shell scripts to separate files
+
+[33mcommit b63f1721d1ee462aacf206045377fb66f5f1b9cc[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Tue Aug 27 09:45:55 2019 +0200
+
+    Change reorder-the-history exercise to use a remote
+    
+    This allows `git rebase -i` to automatically go back
+    to origin/master if no target tree'ish is specified.
+
+[33mcommit b4bc03ceaf44a247c0a06ee2624bdb6fcea33d12[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Tue Aug 27 09:44:31 2019 +0200
+
+    Add simple way of setting up fake remote for exercises
+
+[33mcommit ecf8776770c967526fdff40a506240c2fc45296a[m
+Author: Jan Krag <jak@praqma.net>
+Date:   Thu Aug 22 11:04:54 2019 +0200
+
+    Added atom and vscode to config examples
+
+[33mcommit 9e853b3c9510876dd26249c8bfdf16d30b901bbc[m
+Merge: 3483d7d c842cfc
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Mon Aug 12 12:37:20 2019 +0200
+
+    Merge pull request #191 from grammeaway/master
+    
+    Fixed README numbering, so that it now increments both in shell and in markdown
+
+[33mcommit c842cfcf9520cacf76a2654d886ea9de86a7cb33[m
+Author: Victor Gram Thomsen <victor_gram@ymail.com>
+Date:   Wed Aug 7 14:44:06 2019 +0200
+
+    Fixed numbering, so that it now increments both in shell and in markdown
+
+[33mcommit 3483d7dae23d2d4cd31f4433eece08b3e6607039[m
+Merge: ae5cd71 3d71a75
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Wed Aug 7 13:40:56 2019 +0200
+
+    Merge pull request #190 from kvartborg/make-setup-executable-in-bisect-kata
+    
+    setup.sh and verify.sh should be executables in the bisect kata
+
+[33mcommit 3d71a7573e6f268544d8dccd0f36e52a195e4d73[m
+Author: kvartborg <hello@kvartborg.net>
+Date:   Wed Aug 7 13:22:27 2019 +0200
+
+    setup.sh and verify.sh should be executables
+
+[33mcommit ae5cd71c2f3b5d5c01d14a4b40d07864c074d040[m
+Merge: 5559421 2c965de
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Mon Aug 5 11:51:43 2019 +0200
+
+    Merge pull request #189 from praqma-training/learning-path
+    
+    Add learning path to README
+
+[33mcommit 2c965de29223833f2eb5b29e8ffe9ccb0a166a56[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Mon Aug 5 11:49:00 2019 +0200
+
+    Add learning path to README
+    
+    Close #185 close #130 close #56
+
+[33mcommit 55594217b14ef952268c64b8e4f422c2177d9e52[m
+Merge: 5161a41 34b461e
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Thu Jul 4 10:11:27 2019 +0200
+
+    Merge pull request #184 from adamatan/markdown-fix
+    
+    Mark "git status" as code
+
+[33mcommit 34b461eb281fd4ae248b105bf5e20baeeb38f3a7[m
+Author: Adam Matan <adamatan@users.noreply.github.com>
+Date:   Thu Jul 4 00:38:53 2019 +0300
+
+    Mark "git status" as code
+
+[33mcommit 5161a418246f7d1e4cfa3484359619bf9e9fba1a[m
+Author: Sofus Albertsen <soa@praqma.com>
+Date:   Mon Jul 1 14:09:50 2019 +0200
+
+    Adding note about running sh in windows
+    FIX  #183
+
+[33mcommit 70226d37d28593250806a73feed8b34f634e8eab[m
+Merge: 590fc3f 55d4be4
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Fri May 31 12:39:08 2019 +0200
+
+    Merge pull request #182 from ntnhon/patch-1
+    
+    Fix typos
+
+[33mcommit 590fc3fd2b59d3db92e14ad66dd6f119d5d11e36[m
+Merge: cb578ea 2baefaa
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Fri May 31 12:38:10 2019 +0200
+
+    Merge pull request #181 from adamatan/master
+    
+    Style: mark 'file.txt' as code
+
+[33mcommit cb578ea91facebfea99fe2b02476d0b8a89a133c[m
+Merge: 93a767b 11470d0
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Fri May 31 12:37:05 2019 +0200
+
+    Merge pull request #180 from ftheile/fix-typo
+    
+    Fix a typo: append missing closing brace
+
+[33mcommit 55d4be4ee75de15c0812ce306725f6338c0355e1[m
+Author: Thanh-Nhon NGUYEN <ntnhon.cs@gmail.com>
+Date:   Tue May 21 22:43:02 2019 +0200
+
+    Fix typos
+
+[33mcommit 2baefaad9d442471107db33ef803ac43fadd5fe4[m
+Author: Adam Matan <adam@matan.name>
+Date:   Sun May 12 13:53:11 2019 +0300
+
+    Style: mark 'file.txt' as code
+
+[33mcommit 11470d0b3a7adbe44db7cf04d991132e616af141[m
+Author: Frank Theile <frank.theile@web.de>
+Date:   Tue Apr 16 20:08:45 2019 +0200
+
+    Fix a typo: append missing closing brace
+
+[33mcommit 93a767b217a0bceb0e80eba3a1ccae416b443e51[m
+Merge: fc4849b 1119c7f
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Fri Apr 5 13:28:58 2019 +0200
+
+    Merge pull request #179 from ftheile/patch-1
+    
+    Mention `touch` to create an empty file
+
+[33mcommit 1119c7f3353cde18598342e151aab8d28ec72338[m
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Fri Apr 5 13:28:17 2019 +0200
+
+    Update SHELL-BASICS.md
+    
+    Added elaboration
+
+[33mcommit 9989a827710012e600fc6d32a3a4e9e27a176ce4[m
+Author: Frank Theile <frank.theile@web.de>
+Date:   Fri Apr 5 13:24:34 2019 +0200
+
+    Mention `touch` to create an empty file
+
+[33mcommit fc4849b100f2e1b2f04b6dfceaa7b591014b14c9[m
+Merge: b5c61c2 246e4b3
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Mon Mar 25 08:12:54 2019 +0100
+
+    Merge pull request #178 from praqma-training/remove-decorate
+    
+    Remove --decorate from katas
+
+[33mcommit 246e4b340242755d08e646498cbb07dde16fd240[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Sat Mar 23 10:39:02 2019 +0530
+
+    Remove --decorate from katas
+    
+    The --decorate option is default in git log, and provides no value in
+    the form where it is currently used in the examples.
+
+[33mcommit b5c61c2abf5a27c7ba9e00db7810ec96a6e1f729[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Thu Mar 21 10:56:13 2019 +0530
+
+    Fixed commit -m example
+
+[33mcommit 73c89b3479cad43a70198c4d713bc57dc5348ff1[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Thu Mar 21 10:32:13 2019 +0530
+
+    Add more editor config options to basic-commits
+    
+    Instructions for Atom and Notepad++
+
+[33mcommit fe14a393d628929c0a808d87ba5ab701b41c6881[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Wed Mar 20 23:52:31 2019 +0530
+
+    Add a bare minimum shell survival guide for training
+
+[33mcommit 950fd3c6bfd9ca1cd83bb28c71fa6f55265fb385[m
+Merge: f6a1b48 a44aaf9
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Mon Mar 18 13:20:52 2019 +0530
+
+    Merge pull request #176 from praqma-training/170-remove-patch-mode
+    
+    Remove usage of patch mode add from 3-way-merge exercise
+
+[33mcommit a44aaf9aa24f2389d0fff712326520588dae6caf[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Sat Mar 16 22:17:25 2019 +0530
+
+    Remove usage of patch mode add from 3-way-merge exercise
+    
+    Patch mode add is an advanced topic that does not fit the level of this
+    exercise and the time and way it is typically used in training.
+
+[33mcommit f6a1b48596be878a5c61498fe2ce86bd108c5a35[m
+Merge: 4a05068 cdce2f5
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Thu Feb 21 11:15:53 2019 +0100
+
+    Merge pull request #175 from katrinleinweber/fix-typos
+    
+    Fix typos
+
+[33mcommit cdce2f5421ef4b17c69ad9b9eedac401453840ba[m
+Author: Katrin Leinweber <Katrin.Leinweber@tib.eu>
+Date:   Tue Feb 19 14:21:15 2019 +0100
+
+    Fix typos
+
+[33mcommit 4a05068b8603d7952cbb68a99134a1aed701ea1b[m
+Merge: 837a59c 26b365e
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Thu Nov 22 15:24:19 2018 +0100
+
+    Merge pull request #169 from praqma-training/less-decorate
+    
+    Remove `--decorate` in basic exercises log examples
+
+[33mcommit 26b365e4aeac2329ce3917f0fdd42b1ef44a8889[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Tue Nov 20 15:26:21 2018 +0100
+
+    Remove `--decorate` in basic exercises log examples
+    
+    The default `--decorate` behavior is now default in git log
+    unless you specify e.g. `--decorate=full`
+    
+    There is no reason to confuse beginners with something that is default
+    behavior anyway.
+
+[33mcommit 837a59c3a5a9c44202efe4545d4ca362e9cc0200[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Tue Nov 20 14:30:53 2018 +0100
+
+    Small improvements to README
+
+[33mcommit e126be676bee3f5a54fd16265ce3dc51b0e37d34[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Tue Nov 13 15:42:42 2018 +0100
+
+    Fixed various spelling mistakes
+
+[33mcommit a1f08bf1d9922a14e59c5f4387128611ebc733d3[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Tue Nov 13 10:07:48 2018 +0100
+
+    Added config info about configuring notepad++
+
+[33mcommit 92be66b100a9f246811ce9a1c2ebbdfb22993c99[m[33m ([m[1;31morigin/submodule-basic-exercise[m[33m)[m
+Merge: a5a30a6 ca4b14a
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Fri Nov 9 11:58:25 2018 +0100
+
+    Merge pull request #159 from praqma-training/138-explicit-cd-in-instructions
+    
+    #138 - Sanitize all READMEs wrt entering the exercise folder
+
+[33mcommit ca4b14a62752985130a8ebb29e69b08ef584c9ce[m
+Merge: af5460c a5a30a6
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Fri Nov 9 11:58:15 2018 +0100
+
+    Merge branch 'master' into 138-explicit-cd-in-instructions
+
+[33mcommit a5a30a65258a3f20ecb5fa36646edf0b95ae9dbd[m
+Merge: f75f8a2 7c42526
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Fri Nov 9 11:57:29 2018 +0100
+
+    Merge pull request #168 from figaw/master
+    
+    Add good base for git cheat sheet #146
+
+[33mcommit 7c42526783c92c5a3038a83c40a76ac1a0197d74[m
+Merge: abdd4af f75f8a2
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Fri Nov 9 11:57:17 2018 +0100
+
+    Merge branch 'master' into master
+
+[33mcommit f75f8a2f633804c1b526b72c311847eb393f9a40[m
+Merge: 11b7476 3093cc6
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Fri Nov 9 11:19:48 2018 +0100
+
+    Merge pull request #166 from praqma-training/test-script
+    
+    WIP Test script
+
+[33mcommit abdd4af16a6016fce7d57c594b782149ab196fed[m
+Author: Nicolaj Græsholt <figaw@hotmail.com>
+Date:   Fri Nov 9 11:17:47 2018 +0100
+
+    Add good base for git cheat sheet #146
+
+[33mcommit 11b74763e2437c956f5748b819567ac2e8b9b309[m
+Author: Sofus Albertsen <soa@praqma.net>
+Date:   Fri Nov 9 11:16:04 2018 +0100
+
+    Fix #5 rewording the exercise to the new layout.
+
+[33mcommit 3093cc616ce04cbec6e4467ca5182e4ba92886f4[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Fri Nov 9 11:14:17 2018 +0100
+
+    Add brief test info
+
+[33mcommit af5460cd5aa32a51c3bb36bbf16ab173b61c2db7[m
+Author: Albert Rigo <alr@praqma.net>
+Date:   Fri Nov 9 11:13:45 2018 +0100
+
+    Fix #138 Sanitize all READMEs wrt entering the exercise folder
+
+[33mcommit 6e17279f7fa4f6030cbd85a86649bac526f54aae[m
+Author: Sofus Albertsen <soa@praqma.net>
+Date:   Fri Nov 9 10:58:38 2018 +0100
+
+    FIX  #2 making description more clear
+
+[33mcommit 91438c2814cd19dd3b8e5c64d3cdf91187f9baf8[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Fri Nov 9 10:55:17 2018 +0100
+
+    Add bash test script
+
+[33mcommit ad91b9427e25a0ba004354d065cad0ac249c4d12[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Fri Nov 9 10:52:37 2018 +0100
+
+    Add test powershell close #161
+
+[33mcommit 60ac7aee6e9d1150c159fd4fc1d7439936b65244[m
+Merge: e6c4a07 663dd7f
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Fri Nov 9 10:39:09 2018 +0100
+
+    Merge pull request #158 from figaw/master
+    
+    Add 'open in gcs btn' close #149
+
+[33mcommit 663dd7f793c0d2873d20a83a7367ce726db24c60[m
+Author: Nicolaj Græsholt <figaw@hotmail.com>
+Date:   Fri Nov 9 10:38:34 2018 +0100
+
+    Add 'open in gcs btn' close #149
+
+[33mcommit e6c4a0778a4afd31f98fc2f8f5a42f407fc35e3b[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Sun Nov 4 11:55:24 2018 +0100
+
+    Fixed spelling
+
+[33mcommit 52f326fc56ba2482c3e615fae275bce3ea6348ca[m
+Merge: 3c06534 905aae7
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Fri Nov 2 12:39:21 2018 +0100
+
+    Merge pull request #148 from Neppord/rebase-exec-kata
+    
+    First version of rebase-exec.
+
+[33mcommit 3c0653496f5a2f270f6f1aa8ad268bdde7859287[m
+Merge: 1ba5cac ff37a57
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Fri Nov 2 12:39:05 2018 +0100
+
+    Merge pull request #153 from bothzoli/feature/powershell-setup
+    
+    Add PowerShell setup files for further katas
+
+[33mcommit ff37a577d6b34ef78d0d0070a84c8a6170b457ef[m
+Author: bothzoli <bothzoli@gmail.com>
+Date:   Fri Nov 2 02:23:08 2018 +0100
+
+    Correct a minor bug in ignore/setup.ps1
+    
+    An unnecessary `echo` command was left in the setup file for the
+    ignore kata.
+
+[33mcommit 344c846032e9b67927f2831e4772c6a4d00e9cce[m
+Author: bothzoli <bothzoli@gmail.com>
+Date:   Fri Nov 2 02:04:12 2018 +0100
+
+    Add PowerShell setup files for further katas
+    
+    With this commit PowerShell setup files are added for the
+    following katas:
+    - commit-on-wrong-branch-2
+    - detached-head
+    - ff-merge
+    - ignore
+    - investigation
+    - merge-conflict
+    - merge-mergesort
+    - rebase-branch
+    - reorder-the-history
+    - reset
+    - reverted-merge
+    - save-my-commit
+    - squashing
+    - submodules
+
+[33mcommit 1ba5cac247428cbb0033b6b1cb73478ed2c9f62a[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Wed Oct 31 14:34:45 2018 +0100
+
+    Fix typos in bisect kata
+
+[33mcommit 5918c1c010286f12b29bc59b5263673a10bde490[m
+Merge: 19ad4c1 816c858
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Wed Oct 31 14:19:45 2018 +0100
+
+    Merge pull request #150 from Neppord/bisect-kata
+    
+    Add first version of the bisect kata.
+
+[33mcommit 816c858d1e6fc23723e076d316aca002253d2454[m
+Author: Samuel Ytterbrink <say@praqma.net>
+Date:   Wed Oct 31 14:09:59 2018 +0100
+
+    Improve the bisect readme.
+    
+    Don't use blame as a readon for use bisect.
+
+[33mcommit 829a1b05c228588629fcc913175f4863a93eab6c[m
+Author: Samuel Ytterbrink <say@praqma.net>
+Date:   Wed Oct 31 12:39:42 2018 +0100
+
+    Add a more flavoured readme for bisect.
+
+[33mcommit 19ad4c13b0449424602b27115b176916fb0c370b[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Wed Oct 31 12:21:34 2018 +0100
+
+    Fix typo in squashing readme
+
+[33mcommit bbb5663f07446a1f3346b0f91769963a0ed24278[m
+Merge: 07fa649 6f3910a
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Wed Oct 31 08:24:49 2018 +0100
+
+    Merge pull request #152 from bothzoli/feature/powershell-setup
+    
+    Add PowerShell setup files for further katas
+
+[33mcommit 07fa6493716ec99d6956d293ca070cf9bc94d1b0[m
+Merge: 579bdbc 06ea087
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Wed Oct 31 08:22:43 2018 +0100
+
+    Merge pull request #151 from bothzoli/bug/basic-branching
+    
+    Fix error in setup of basic-branching kata
+
+[33mcommit 6f3910ac1e7cd65fb7207217a671049571cf1156[m
+Author: bothzoli <bothzoli@gmail.com>
+Date:   Wed Oct 31 00:24:02 2018 +0100
+
+    Add PowerShell setup option to README.md files
+    
+    This commit adds the PowerShell setup option to the README.md files
+    where a PowerShell `setup.ps1` has already been created.
+
+[33mcommit a6444909eb401c4a43e5c8f2835e5ab9a116d727[m
+Author: bothzoli <bothzoli@gmail.com>
+Date:   Wed Oct 31 00:19:38 2018 +0100
+
+    Add PowerShell setup files for further katas
+    
+    With this commit PowerShell setup files are added for the
+    following katas:
+    - 3-way-merge
+    - advanced-rebase-interactive
+    - amend
+    - bad-commit
+    - commit-on-wrong-branch
+
+[33mcommit 06ea087a64620e8ffd54c7cb901fd02e6441b1c2[m
+Author: bothzoli <bothzoli@gmail.com>
+Date:   Tue Oct 30 19:33:47 2018 +0100
+
+    Fix error in setup of basic-branching kata
+    
+    This commit will fix an error in the setup.sh of the
+    basic-branching kata.
+    After `git init` the setup script tried to checkout the already
+    checked out master branch. that showed an error:
+    `error: pathspec 'master' did not match any file(s) known to git`
+    
+    Closes #117
+
+[33mcommit d7620eb83f2f3ae489dd5b42619ed739aa8fa32f[m
+Author: Samuel Ytterbrink <say@praqma.net>
+Date:   Tue Oct 30 15:06:24 2018 +0100
+
+    Add first version of the bisect kata.
+
+[33mcommit 905aae7b63b2a6b5708f23160fa467f2d0623fd8[m
+Author: Samuel Ytterbrink <say@praqma.net>
+Date:   Tue Oct 30 13:14:49 2018 +0100
+
+    First version of rebase-exec.
+
+[33mcommit 579bdbcd303f1887f908fdd10757c013b2ea92df[m
+Merge: 4fa77c3 fbab3e8
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Tue Oct 30 10:58:00 2018 +0100
+
+    Merge pull request #147 from bothzoli/feature/powershell-setup
+    
+    Add Powershell setup files for basic katas
+
+[33mcommit fbab3e8cb8da44b0c0bb4e293099fd9dfd843610[m
+Author: bothzoli <bothzoli@gmail.com>
+Date:   Fri Oct 26 13:14:29 2018 +0200
+
+    Add Powershell setup files for basic katas
+    
+    With this commit you will be able to setup the basic katas using
+    Powershell in case you cannot/don't want to use Git bash.
+
+[33mcommit 4fa77c30144d675e372f37d290cb43b5113a264c[m
+Author: Thierry Lacour <thi@praqma.net>
+Date:   Tue Oct 23 15:49:23 2018 +0200
+
+    Fix typo in README
+
+[33mcommit fe4cf7aa4a7c3d0ec999ffd5af1a1662a8847418[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Tue Oct 16 15:57:55 2018 +0530
+
+    Added advanced interactive rebase exercise
+
+[33mcommit 18da738e2e969f11b70ddeef5339c46ea450bc61[m
+Merge: ab462f0 4cab2fa
+Author: Sofus Albertsen <sofusalbertsen@users.noreply.github.com>
+Date:   Tue Oct 16 08:29:24 2018 +0200
+
+    Merge pull request #144 from praqma-training/sal-basic-revert
+    
+    added first draft of revert #143
+
+[33mcommit 4cab2fa2852239a9a909b041f868801f24f31602[m
+Author: Sofus Albertsen <soa@praqma.net>
+Date:   Tue Oct 16 08:28:16 2018 +0200
+
+    Made the change suggested by review
+
+[33mcommit ab462f067f117858d70a8129c3e5dda85dc4d58f[m
+Merge: 732a979 56eebc2
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Tue Oct 16 08:24:01 2018 +0200
+
+    Merge pull request #142 from praqma-training/JKrag-patch-1
+    
+    Suggestion about rev-parse changed to reflog
+
+[33mcommit 6a1e6fd97ae0c8542e965fd9950360bc709e2f1e[m
+Author: Sofus Albertsen <soa@praqma.net>
+Date:   Mon Oct 15 13:04:04 2018 +0200
+
+    added first draft of revert
+
+[33mcommit 56eebc27843418228b2dd88f481ca5e20d017ef3[m
+Author: Jan Krag <jak@praqma.net>
+Date:   Tue Aug 21 00:41:04 2018 +0200
+
+    Suggestion about rev-parse changed to reflog
+    
+    I assume that reflog was what was originally intended here.
+
+[33mcommit 732a9793dce1c056ec95777c7a7165b3519b57cc[m
+Merge: 6cc68e8 a4e8f5a
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Thu Aug 16 08:40:51 2018 +0200
+
+    Merge pull request #141 from indy5858/add-second-commit-on-wrong-branch
+    
+    Add second commit on wrong branch
+
+[33mcommit a4e8f5ad21b1710b4a5a73b189dd5f8cfad89683[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Thu Aug 16 08:37:21 2018 +0200
+
+    Clarify that reset does not remove commit from repository
+
+[33mcommit 4f561cb3231645871ddef7edee8d01a0d72deabd[m
+Merge: 713817a 60025f2
+Author: Andre Kappes <lewwerworscht@vollbio.de>
+Date:   Thu Aug 2 23:40:27 2018 +0200
+
+    Merge branch 'add-second-commit-on-wrong-branch'
+
+[33mcommit 60025f20d2b44080167507be7a06fc0fefb3f6bb[m
+Author: Andre Kappes <lewwerworscht@vollbio.de>
+Date:   Thu Aug 2 23:31:10 2018 +0200
+
+    Make script executable
+
+[33mcommit e91c90df1de28945f7156d8d36f3c5ba0aa0a450[m
+Author: Andre Kappes <lewwerworscht@vollbio.de>
+Date:   Thu Aug 2 23:24:54 2018 +0200
+
+    Remove -e switch
+
+[33mcommit 36466d01ffba80b686a1a9657235555b3bec7126[m
+Author: Andre Kappes <lewwerworscht@vollbio.de>
+Date:   Thu Aug 2 22:55:27 2018 +0200
+
+    Update overview
+
+[33mcommit bf2681a3141131264daca962ee7b888c8674e0c3[m
+Author: Andre Kappes <lewwerworscht@vollbio.de>
+Date:   Thu Aug 2 22:45:56 2018 +0200
+
+    Add question on bringing bugfix to feature branch
+
+[33mcommit 173ff469139a2e9bb2d92d5de3f41f2302acf704[m
+Author: Andre Kappes <lewwerworscht@vollbio.de>
+Date:   Thu Aug 2 22:34:39 2018 +0200
+
+    Improve instructions
+
+[33mcommit 713817ae783bfd84cd6906fc143f16d085386f73[m
+Merge: 11c0bde 6977492
+Author: Andre Kappes <lewwerworscht@vollbio.de>
+Date:   Thu Aug 2 22:10:11 2018 +0200
+
+    Merge branch 'add-reverted-merge'
+
+[33mcommit 6cc68e824c6b77df918073652a3b9c4abba84dc8[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Mon Jul 30 10:01:35 2018 +0200
+
+    Add link to faulty merge gist
+
+[33mcommit 5576117040c0124f9f12d179f242a62eedc91dc7[m
+Merge: 87d8b78 5fc6693
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Mon Jul 30 09:56:06 2018 +0200
+
+    Merge pull request #140 from indy5858/add-reverted-merge
+    
+    Add kata reverted-merge
+
+[33mcommit 6d62895fea6293e4198bfc55840e74c22e64bb9a[m
+Author: Andre Kappes <andre.kappes@andrena.de>
+Date:   Mon Jul 23 22:19:21 2018 +0200
+
+    Reformat
+
+[33mcommit ea2e10c7c688180b7502baa2e0399dd2e1e6451a[m
+Author: Andre Kappes <andre.kappes@andrena.de>
+Date:   Mon Jul 23 22:18:50 2018 +0200
+
+    Separate bugfix code from feature to make git figure out how to merge
+
+[33mcommit 5fc66935a47c2b45f2419446df6a60d9e92f0a21[m
+Author: Andre Kappes <andre.kappes@andrena.de>
+Date:   Mon Jul 23 21:47:43 2018 +0200
+
+    Reformat
+
+[33mcommit 8dcc721a7f99883eab8f378308202be73cfbd3b0[m
+Author: Andre Kappes <andre.kappes@andrena.de>
+Date:   Mon Jul 23 21:04:25 2018 +0200
+
+    add note on feature Y
+
+[33mcommit f4dbba6242d1499faa6078cbd53f38664cdde87e[m
+Author: Andre Kappes <andre.kappes@andrena.de>
+Date:   Mon Jul 23 21:04:03 2018 +0200
+
+    remove unused variable
+
+[33mcommit dab8d2c7e8cd2ab6b5b1b834bd331843450e19a8[m
+Author: Andre Kappes <andre.kappes@andrena.de>
+Date:   Mon Jul 23 21:03:51 2018 +0200
+
+    remove comments
+
+[33mcommit cbdb152628a4d2d0542d786a44867a3395363baf[m
+Author: Andre Kappes <andre.kappes@andrena.de>
+Date:   Mon Jul 23 21:03:33 2018 +0200
+
+    remove check on correct directory
+
+[33mcommit bfe736858baeeed0b5190ce0beb81bd2699abdb9[m
+Author: Andre Kappes <andre.kappes@andrena.de>
+Date:   Mon Jul 23 21:03:10 2018 +0200
+
+    Remove -e switch
+    
+    breaks if script is not sourced
+
+[33mcommit 697749220f4b1e2205b2b9e52d4162e5ad21a65a[m
+Author: Andre Kappes <lewwerworscht@vollbio.de>
+Date:   Sun Jul 22 12:22:37 2018 +0200
+
+    Update overview
+
+[33mcommit 11c0bde933e8a7d7fdb74b8ffdb2490f6496ebd4[m
+Author: Andre Kappes <lewwerworscht@vollbio.de>
+Date:   Sun Jul 22 10:01:29 2018 +0200
+
+    Add kata for commit on wrong branch
+
+[33mcommit c2ae5f20763cce6f48917d647d92ee33645ba917[m
+Author: Andre Kappes <lewwerworscht@vollbio.de>
+Date:   Sat Jul 21 15:46:56 2018 +0200
+
+    Replace project by product in README
+
+[33mcommit 7e482a88d17f2fb1606da36be7c044d3a02abb52[m
+Author: Andre Kappes <andre.kappes@andrena.de>
+Date:   Fri Jul 20 18:57:35 2018 +0200
+
+    Rephrase story
+
+[33mcommit 3038ad952834b0e3b0a7e82115b9684cc3b52e7e[m
+Author: Andre Kappes <andre.kappes@andrena.de>
+Date:   Fri Jul 20 18:54:53 2018 +0200
+
+    Remove revert and put in as task
+
+[33mcommit 553510e3a95dea690aee0809925c00356746b171[m
+Author: Andre Kappes <andre.kappes@andrena.de>
+Date:   Fri Jul 20 18:30:06 2018 +0200
+
+    Add kata description
+
+[33mcommit fa50bf22d313c7021078a92ecf5cbbe5ab2ad97d[m
+Author: Andre Kappes <andre.kappes@andrena.de>
+Date:   Fri Jul 20 17:40:18 2018 +0200
+
+    Add new kata setup
+
+[33mcommit 87d8b78d5edfe1f6fc2136209b9054f68f782ce5[m
+Merge: 592ea2d ee842d0
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Mon May 14 13:04:30 2018 +0200
+
+    Merge pull request #137 from tomhostyn/mk_stash_kata_2
+    
+    Mk stash kata 2
+
+[33mcommit ee842d0c22b645e3409d8e707a7cc6af8ed70884[m
+Author: tomhostyn <tom.hostyn@gmail.com>
+Date:   Mon May 14 10:34:30 2018 +0200
+
+    Update README.md
+    
+    add a link to the reset kata
+
+[33mcommit 14fe4e61bf528b7f24ae1c61d01f8ba801246498[m
+Author: tomhostyn <tom.hostyn@gmail.com>
+Date:   Mon May 14 09:28:55 2018 +0200
+
+    Update Overview.md
+    
+    move stashing after reset
+
+[33mcommit 2e6c29e32c84d6dbbc1b613d793043ab9f5758f7[m
+Author: tomhostyn <tom.hostyn@gmail.com>
+Date:   Mon May 14 09:22:17 2018 +0200
+
+    Update README.md
+    
+    simplify scenario a bit
+
+[33mcommit b5006e68a5b0f80ac20f9fbba7895fc51ab382a6[m
+Author: tomhostyn <tom.hostyn@gmail.com>
+Date:   Mon May 14 09:16:01 2018 +0200
+
+    Update README.md
+    
+    update scenario to make it more clear how applying stashes affects the index and working directory
+
+[33mcommit caaf6d647a14ee37a8bb9a7638e91ce18062f395[m
+Author: tomhostyn <tom.hostyn@gmail.com>
+Date:   Mon May 14 08:32:53 2018 +0200
+
+    Update README.md
+    
+    typo exercise
+
+[33mcommit badca0760d54eabc7dfc25d6ffad37eecfd0afac[m
+Author: tom hostyn <tom.hostyn@gmail.com>
+Date:   Mon May 14 08:29:50 2018 +0200
+
+    change instruction to execute setup rather than source
+
+[33mcommit eaa038c6238e503e8d4002dd11ff932f022b5dde[m
+Author: tom hostyn <tom.hostyn@gmail.com>
+Date:   Mon May 14 08:28:45 2018 +0200
+
+            modified:   setup.sh
+                    edit kata name
+
+[33mcommit 72a3634b160b44244ee3061e66688fc7e55569c4[m
+Author: tom hostyn <tom.hostyn@gmail.com>
+Date:   Sun May 13 22:30:35 2018 +0200
+
+    address pull request comments. uppercase, setup and newlines after
+    headers
+
+[33mcommit 7a62cd181b3c0b39d4e35af3f8472a9d00329feb[m
+Merge: 3c9b885 2f53fae
+Author: tom hostyn <tom.hostyn@gmail.com>
+Date:   Sun May 13 22:08:56 2018 +0200
+
+    Merge branch 'master' of github.com:tomhostyn/gitkatas
+    
+            modified:   Overview.md
+                    fix description for stashing kata
+
+[33mcommit 3c9b885c47ef0a130c82d4bad73fb4eaf6f09fd9[m
+Merge: 905a230 592ea2d
+Author: tom hostyn <tom.hostyn@gmail.com>
+Date:   Sun May 13 22:06:40 2018 +0200
+
+    Merge branch 'master' of https://github.com/praqma-training/gitkatas
+    
+            modified:   Overview.md
+            new file:   basic-cleaning/README.md
+            new file:   basic-cleaning/setup.sh
+
+[33mcommit 2f53faed1c0e9885ae18aa621bb78be654bab255[m
+Merge: 905a230 592ea2d
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Sun May 13 15:55:27 2018 +0200
+
+    Merge branch 'master' into master
+
+[33mcommit 592ea2db4cdf3e07af43daaa421f9d832f4eb4be[m
+Merge: 135f96d 8b43d4c
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Sun May 13 15:52:11 2018 +0200
+
+    Merge pull request #136 from tomhostyn/mk_basic_clean_kata
+    
+    Make basic cleaning kata
+
+[33mcommit 8b43d4ca9c29646525b89b9fd30bc73af4b3b30e[m
+Author: tomhostyn <tom.hostyn@gmail.com>
+Date:   Sun May 13 14:54:58 2018 +0200
+
+    Update Overview.md
+    
+    add basic_cleaning kata
+
+[33mcommit 66c3f4bed9b9feaa789884808347f4fee3827d8a[m
+Author: tom hostyn <tom.hostyn@gmail.com>
+Date:   Sun May 13 14:44:36 2018 +0200
+
+    quote filenames
+
+[33mcommit cfb37b5cf97dabf9d28aff4ba4fd5069a349a647[m
+Author: tomhostyn <tom.hostyn@gmail.com>
+Date:   Sun May 13 12:00:55 2018 +0200
+
+    Update README.md
+    
+    fix typos
+
+[33mcommit 47ee62e2f4281d812941ab23290718fab267acac[m
+Author: tomhostyn <tom.hostyn@gmail.com>
+Date:   Sun May 13 11:59:06 2018 +0200
+
+    Update README.md
+    
+    explain steps to safely clean up temporary files
+
+[33mcommit ed1844d70eb19465c5bfe44171a0f9cdb1b0001d[m
+Author: tom hostyn <tom.hostyn@gmail.com>
+Date:   Sun May 13 11:55:43 2018 +0200
+
+    mv source to src. add README.txt
+
+[33mcommit b8246c5ba1402cbd744b1119c838f1565406920b[m
+Author: tom hostyn <tom.hostyn@gmail.com>
+Date:   Sun May 13 11:28:28 2018 +0200
+
+    initial kata
+
+[33mcommit 905a230821390dca8821b4ee0b212ea940603ec9[m
+Author: tomhostyn <tom.hostyn@gmail.com>
+Date:   Sun May 13 10:20:19 2018 +0200
+
+    Update Overview.md
+    
+    add kata basic-stashing
+
+[33mcommit a908e681d66a8a9c2f0b3c5998ae95ddeffa80bb[m
+Author: tom hostyn <tom.hostyn@gmail.com>
+Date:   Sun May 13 10:18:21 2018 +0200
+
+    change to basic-stashing to match naming convention of other katas
+
+[33mcommit 65f49968cf279f6736fe1b051fd1fc284b085e30[m
+Merge: 14c21f8 046805a
+Author: tom hostyn <tom.hostyn@gmail.com>
+Date:   Sun May 13 10:12:31 2018 +0200
+
+    Merge branch 'master' of github.com:tomhostyn/gitkatas
+
+[33mcommit 14c21f8cc249aa3c39425d81a9cfa8184b91ad37[m
+Author: tom hostyn <tom.hostyn@gmail.com>
+Date:   Sun May 13 10:12:25 2018 +0200
+
+    update script to add 2nd file, easy to fix bug
+
+[33mcommit 046805a951ab874adb1098f5e74eca2f1d978a79[m
+Author: tomhostyn <tom.hostyn@gmail.com>
+Date:   Sun May 13 10:10:37 2018 +0200
+
+    Update README.md
+    
+    fix kata title
+
+[33mcommit 27ea6542ffd1c7b2b34fb81ab9fc4a971d007340[m
+Author: tomhostyn <tom.hostyn@gmail.com>
+Date:   Sun May 13 10:09:59 2018 +0200
+
+    Update README.md
+    
+    add dropping the stash to the kata
+
+[33mcommit 2ccc236bc90902bab4bb12aaaff2ce9b03f23523[m
+Author: tomhostyn <tom.hostyn@gmail.com>
+Date:   Sun May 13 09:59:10 2018 +0200
+
+    Update README.md
+    
+    add commit and add as useful commands for this kata
+
+[33mcommit 59f0fa3c0128a48c7d852049a78faeddf7b557c8[m
+Author: tomhostyn <tom.hostyn@gmail.com>
+Date:   Sun May 13 09:57:17 2018 +0200
+
+    Update README.md
+    
+    add final steps - apply stash
+
+[33mcommit 14fdde516b56a0532b369ce9f989c7faa9416b9b[m
+Author: tomhostyn <tom.hostyn@gmail.com>
+Date:   Sun May 13 09:53:28 2018 +0200
+
+    Update README.md
+    
+    add kata steps and useful commands
+
+[33mcommit d608d4a586fbd5ff213441e5f44703c643d516cc[m
+Author: tom hostyn <tom.hostyn@gmail.com>
+Date:   Sat May 12 17:38:48 2018 +0200
+
+    initial setup.sh and empty doc
+
+[33mcommit 135f96dc37446d21372d668077df4a1e67545137[m
+Merge: a915cd2 bc03a94
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Sat May 12 09:55:26 2018 +0200
+
+    Merge pull request #133 from OEHC/patch-3
+    
+    Make checkout command more clear
+
+[33mcommit a915cd2c4da5a2d1e624569b64e7996136d5cd0d[m
+Merge: 21cb0ca b6b44dc
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Sat May 12 09:54:48 2018 +0200
+
+    Merge pull request #134 from tomhostyn/fix_pre-push_executable
+    
+    made the pre-push executable
+
+[33mcommit b6b44dc71630680b1d3c5c797b078c2ba002e20d[m
+Author: tom hostyn <tom.hostyn@gmail.com>
+Date:   Sat May 12 09:35:26 2018 +0200
+
+            modified:   pre-push
+                    make the pre-push script executable
+
+[33mcommit bc03a94038e4f10ed7b3c7b299c5cbfb79cd7eaf[m
+Author: Oliver Emil Harritslev Christensen <oehc@praqma.com>
+Date:   Wed May 9 18:32:41 2018 +0200
+
+    Make checkout command more clear
+    
+    Closes #131 in praqma-training/gitkatas
+
+[33mcommit 21cb0ca8440a47bc2805552e4d935f76a1de458a[m
+Author: Johan Abildskov <jabildskov@grundfos.com>
+Date:   Tue May 8 11:15:59 2018 +0200
+
+    add cd exercise to basic-commits
+
+[33mcommit af4b61c1af06177afd88f665006513bcdbf5ba71[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Wed May 2 18:02:59 2018 +0200
+
+    fix basic commits link on overview
+
+[33mcommit 9d61237c4e7c5cc04dc2714d4f5ce3368cb228ee[m
+Author: Thierry Lacour <thi@praqma.net>
+Date:   Tue Apr 10 15:23:42 2018 +0200
+
+    Add patch mode flag
+
+[33mcommit 3909ab13d125d4a25840ddc80239bb0fb648816c[m
+Merge: 4a424b7 bb860cc
+Author: Mike Long <mike@praqma.com>
+Date:   Wed Mar 14 14:18:29 2018 +0100
+
+    Merge pull request #129 from Monadproxy/patch-1
+    
+    Casing fix
+
+[33mcommit bb860cc3685d40ff4453e146a20e5804b499f3bb[m
+Author: Monadproxy <monadproxy@gmail.com>
+Date:   Wed Mar 14 13:16:02 2018 +0000
+
+    Casing fix
+    
+    Changed upper case s to lower case to match files.
+
+[33mcommit 4a424b7eab42ac519ff6deb882825fcb738530ba[m
+Merge: 22bcc19 2acf11b
+Author: Mike Long <mike@praqma.com>
+Date:   Wed Mar 14 11:07:37 2018 +0100
+
+    Merge pull request #128 from praqma-training/meekrosoft-remove
+    
+    Remove unnecessary cd command
+
+[33mcommit 2acf11bbb318d24e62528aeb5f44fdf4ccf0a403[m
+Author: Mike Long <mike@praqma.com>
+Date:   Wed Mar 14 11:04:53 2018 +0100
+
+    Remove unnecessary cd command
+
+[33mcommit 22bcc19ec521d32229b6604531d3e755d14593ee[m
+Merge: 4c154e1 cbeb725
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Mon Jan 29 14:14:12 2018 +0100
+
+    Merge pull request #125 from Voles/patch-1
+    
+    Update README.md for the bad-commit kata
+
+[33mcommit cbeb725d95c206905c80cfe062b5c97c65e903bf[m
+Author: Niels Dequeker <niels.dequeker@gmail.com>
+Date:   Fri Jan 26 22:08:50 2018 +0100
+
+    Update README.md
+
+[33mcommit 0ca606a9b6e7b94fac40a884de3dc2aae62a8822[m
+Author: Niels Dequeker <niels.dequeker@gmail.com>
+Date:   Fri Jan 26 22:05:59 2018 +0100
+
+    Update README.md for the bad-commit kata
+    
+    - Make it clear the exercise is located inside the exercise directory.
+    - Extended command list with a command that actually outputs the result of a test to the console. To me (command line beginner) it was unclear why I wasn't seeing any output for the test command).
+
+[33mcommit 4c154e111184613fae94bb3d813cdc12f01950c7[m
+Author: Nicolaj Græsholt <figaw@hotmail.com>
+Date:   Tue Jan 16 09:14:45 2018 +0100
+
+    Update README.md
+
+[33mcommit 77bc43ff159ecdc0146bb68fc4514b33a8bb09b5[m
+Merge: 8ce742c a8035fc
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Mon Jan 15 12:20:33 2018 +0100
+
+    Merge pull request #119 from abingham/returning-sorted-list
+    
+    Returning sorted list, not `None`.
+
+[33mcommit 8ce742c21a178eec26458bc59707379319f79e82[m
+Merge: 634c331 31b26c5
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Mon Jan 15 12:19:30 2018 +0100
+
+    Merge pull request #123 from praqma-training/recommend_nano_not_emacs
+    
+    Recommend nano instead of emacs
+
+[33mcommit 634c33168ee434a10f74e3254c3f5f548f263250[m
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Tue Dec 26 14:50:24 2017 +0100
+
+    Set theme jekyll-theme-cayman
+
+[33mcommit fc163eae329810ea862134ad36b36d908bd101a3[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Tue Dec 26 14:47:51 2017 +0100
+
+    Add docs folder
+
+[33mcommit 31b26c5d8055ca35cae9ee4d13ea247eeb6d2479[m
+Author: Jan Krag <jankrag@gmail.com>
+Date:   Thu Dec 14 15:46:20 2017 +0100
+
+    Recommend nano instead of emacs
+    
+    A) It doesn't help much to replace VI with another editor that people don't know how to exit.
+    B) nano comes pre-installed on more systems, incl. Git Bash on windows as far as I remember.
+    
+    .
+
+[33mcommit 52f2dfd699df4610081d0731596ee5c0b4f7c426[m
+Author: Mike Long <mike@praqma.com>
+Date:   Thu Dec 14 13:24:24 2017 +0100
+
+    Remove the set -e since it kills the terminal session when sourced
+
+[33mcommit 2496fde70a9c07fda2786d05bbc0eb9c756edf17[m
+Author: Mike Long <mike@praqma.com>
+Date:   Thu Dec 14 12:40:13 2017 +0100
+
+    Create trainer-notes.md
+
+[33mcommit 5a284f026a19b22f9f51e79144cb83fccfaf2cc2[m
+Merge: aab6b9f f1681b4
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Thu Dec 14 08:27:00 2017 +0000
+
+    Merge pull request #104 from praqma-training/figaw-patch-1
+    
+    Update README.md suggest phrasing. ADD exercise.
+
+[33mcommit aab6b9f7e6325ed2b8a5632487036be9e6ccc5f5[m
+Author: Mike Long <mike@praqma.com>
+Date:   Wed Dec 13 17:15:55 2017 +0100
+
+    Split setup into two steps
+    
+    Put the optional information for windows in a separate step
+
+[33mcommit 638b04b6d804c4cbae94d35ba43869989bc211ff[m
+Author: Mike Long <mike@praqma.com>
+Date:   Wed Dec 13 17:09:50 2017 +0100
+
+    Update README.md
+
+[33mcommit fdf9fbe84816ba6b165ba8bb5923da480090aaf7[m
+Author: Leonard Lee <leonard.lee@praqma.com>
+Date:   Fri Dec 1 12:10:50 2017 +0100
+
+    Update submodule kata.
+    
+    Remove redundant component.
+    Clarify steps.
+
+[33mcommit 52a573ff4ea329ac75b82e543d71dc933f5b538a[m
+Author: Mike Long <mike@praqma.com>
+Date:   Fri Dec 1 11:05:12 2017 +0100
+
+    Update README.md
+
+[33mcommit 207dd9c8ac8924b4156363db7e89f00c5756d490[m
+Author: Mike Long <mike@praqma.com>
+Date:   Fri Dec 1 11:04:41 2017 +0100
+
+    Update README.md
+
+[33mcommit 91624cf0c2da14acdf8bb6cea851f5924e5dda02[m
+Author: Mike Long <mike@praqma.com>
+Date:   Fri Dec 1 10:54:05 2017 +0100
+
+    Update README.md
+
+[33mcommit 9575eeea81ce9183d0ba5e97002a09acff7a1dab[m
+Author: Mike Long <mike@praqma.com>
+Date:   Fri Dec 1 10:53:22 2017 +0100
+
+    Add detach head so we can push to the component repo
+    
+    closes #120
+
+[33mcommit a8035fc0672f2efb81b857fe960f49db3f5797e5[m
+Author: Austin Bingham <austin@sixty-north.com>
+Date:   Thu Nov 30 14:11:12 2017 +0100
+
+    Returning sorted list, not `None`.
+
+[33mcommit 1db7e16d8c7f92875f140f247472992d1fdf662f[m
+Author: Mike Long <mike@praqma.com>
+Date:   Tue Nov 28 21:00:39 2017 +0100
+
+    Added bisect instructions to bad-commit kata
+    
+    Closes #109
+
+[33mcommit 52064ac4cad7dec3d99fc6568e30cc583ad949f6[m
+Author: Mike Long <mike@praqma.com>
+Date:   Mon Nov 27 14:00:41 2017 +0100
+
+    Add git configuration kata
+
+[33mcommit 1db0ba9d5ea97200910b9c1f129e7aa373c9415b[m
+Merge: f06bff2 6836787
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Wed Oct 25 09:47:41 2017 +0200
+
+    Merge pull request #116 from praqma-training/ready/merge-driver-kata
+    
+    Add merge-driver kata
+
+[33mcommit 6836787ea3a931f975e7a859bb18a036cb893791[m
+Author: Thierry Lacour <thi@praqma.net>
+Date:   Thu Oct 19 12:55:34 2017 +0200
+
+    Add merge-driver kata
+
+[33mcommit f06bff2121b6fa188a319e6fd9e0625d28121b6d[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Wed Aug 16 05:54:20 2017 +0000
+
+    Add space rather than /
+
+[33mcommit f1681b4e6f85911b447bf4ff803b10ce3958399b[m
+Author: Nicolaj Græsholt <figaw@hotmail.com>
+Date:   Fri Aug 11 11:16:24 2017 +0200
+
+    Update README.md suggest phrasing. ADD exercise.
+    
+    Move implicitness of _command knowledge_ between earlier and later steps; the first is easier and latter are harder. Not the other way around.
+    Emphasize branch name. Update consistency in filenames.
+    Add "see log"-step after commiting first file and changing branches.
+
+[33mcommit 53f588c9468f0902753cd6f9f6f2fc5498615bce[m
+Author: Nicolaj Græsholt <figaw@hotmail.com>
+Date:   Fri Aug 11 10:06:27 2017 +0200
+
+    Update README.md close #103
+    
+    Clarified exercise.
+
+[33mcommit 05ac1289d7f4492912ce72977338c432b4f5d4d0[m
+Merge: e99146c 308347b
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Wed Aug 9 12:11:59 2017 +0200
+
+    Merge pull request #102 from vimes90/patch-1
+    
+    Added env
+
+[33mcommit 308347b44f0c4eb64d0736cf2bd19237419617b6[m
+Author: vimes90 <andreas1300@gmail.com>
+Date:   Wed Aug 9 11:36:44 2017 +0200
+
+    Added env
+    
+    added " #!/usr/bin/env bash" at the beginning of the file so that the script will also run in zsh. It currently fails in zsh.
+
+[33mcommit e99146cefcab82c359242d8d1e56dd0ca8c2b3af[m
+Author: Mike Long <mike@praqma.com>
+Date:   Tue Aug 8 16:16:17 2017 +0200
+
+    Update typo in instructions
+
+[33mcommit 117ec3c2f484c56f3c94c54e88670d318e34c485[m
+Merge: 2cb8527 a10ce5c
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Tue Jun 13 20:47:53 2017 +0200
+
+    Merge pull request #100 from pedrorijo91/patch-2
+    
+    Fix relevant git command code syntax
+
+[33mcommit a10ce5c8884c11b02a3df5117442ad458b57cbb0[m
+Author: Pedro Rijo <pedrorijo91@gmail.com>
+Date:   Tue Jun 13 19:35:36 2017 +0100
+
+    Fix relevant git command code syntax
+
+[33mcommit 2cb8527335165550f1f76c5d2e18652b3adb2dcc[m
+Merge: 6ee00fa 1debcd9
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Tue Jun 13 20:34:21 2017 +0200
+
+    Merge pull request #99 from pedrorijo91/patch-1
+    
+    Fix markdown link
+
+[33mcommit 1debcd9464d1cf777610f4c28a3aac444b79c69c[m
+Author: Pedro Rijo <pedrorijo91@gmail.com>
+Date:   Tue Jun 13 19:32:09 2017 +0100
+
+    Fix markdown link
+
+[33mcommit 6ee00fa47790e07f9b8c799835d7182037c479fa[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Fri Jun 2 14:08:03 2017 +0200
+
+    close #98 Optimize quickstart gif size
+
+[33mcommit 6ce5c5d2bc1dfb2674a0f8e22bfc04f358e364df[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Fri Jun 2 13:10:37 2017 +0200
+
+    close #97 Create animated gif showing a typical kata flow
+
+[33mcommit 773dcbc1e6c63e85388084f0e26a07475edecd6e[m
+Merge: 0666e4d 879f28b
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Thu Jun 1 08:18:05 2017 +0200
+
+    Merge pull request #96 from brianamarie/master
+    
+    Add `log --all` to see difference in commits on branches
+
+[33mcommit 879f28bcefd4269ecaa1e1b3b50a8e84a9153d4f[m
+Author: Briana Swift <brianamarie@github.com>
+Date:   Wed May 31 10:11:19 2017 -0500
+
+    add --all to see difference in commits on branches
+
+[33mcommit 0666e4d7e477850b70a3044bbaa54739f050bdb2[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Sun May 21 18:35:37 2017 +0200
+
+    formatting in README
+
+[33mcommit dc5842ce274fb420ffe8650fa266370721f4433f[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Tue May 16 13:46:01 2017 +0200
+
+    close #91 Add filename to ignore kata
+
+[33mcommit e1ccb471bfe4caa1f53c2a94b3791b2d1d015897[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Sat May 13 18:35:03 2017 +0200
+
+    close #84 align reorder the history
+
+[33mcommit d403542c2d74dae2b7ff804da5974950b0e78ce1[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Sat May 13 18:17:21 2017 +0200
+
+    close #83 align rebasebranch
+
+[33mcommit d7a2b794372e2ab89c03c19b04d591048c6adae1[m
+Author: Johan Abildskov <jabildskov@grundfos.com>
+Date:   Thu May 11 07:41:42 2017 +0200
+
+    align merge-mergesort
+
+[33mcommit e356ceca23ee56496817558df8d46da30fb28656[m
+Author: Johan Abildskov <jabildskov@grundfos.com>
+Date:   Thu May 11 07:39:38 2017 +0200
+
+    align merge-conflict
+
+[33mcommit f72eb835c843eddc7ba931381baaf55835a848a6[m
+Author: Johan Abildskov <jabildskov@grundfos.com>
+Date:   Thu May 11 07:38:15 2017 +0200
+
+    Align investigation
+
+[33mcommit a5b7a371db681b7c1bfc27300828e61a93a350a5[m
+Author: Johan Abildskov <jabildskov@grundfos.com>
+Date:   Thu May 11 07:35:40 2017 +0200
+
+    Align ignore
+
+[33mcommit 32788217f661c3c828b663268bdebbc510a5c2fe[m
+Author: Johan Abildskov <jabildskov@grundfos.com>
+Date:   Thu May 11 07:33:44 2017 +0200
+
+    align ff-merge close #80
+
+[33mcommit 29ff930f0e7939d657760aa71465d6a9ceb9add4[m
+Author: Johan Abildskov <jabildskov@grundfos.com>
+Date:   Thu May 11 07:20:28 2017 +0200
+
+    close #76 align detached head
+
+[33mcommit d50baded254262e12e066c9f8ec88866c79efc8c[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Wed May 10 20:19:55 2017 +0200
+
+    close #75 align commit on wrong branch
+
+[33mcommit c22be1bc8255e66870f6eb29f5eb368518b273a2[m
+Author: Johan Abildskov <jabildskov@grundfos.com>
+Date:   Wed May 10 16:43:01 2017 +0200
+
+    align basic-staging
+
+[33mcommit e30b2a3756fc002bcdda753c765dd5b56add2fcb[m
+Author: Johan Abildskov <jabildskov@grundfos.com>
+Date:   Wed May 10 16:38:02 2017 +0200
+
+    Align bad-commit
+
+[33mcommit 28e2650098d1f42f0aa41357beec89fb62f6d7df[m
+Author: Johan Abildskov <jabildskov@grundfos.com>
+Date:   Wed May 10 16:36:00 2017 +0200
+
+    Align amend
+
+[33mcommit c9b3623124c4c3056021402f40dc98bb526e9017[m
+Author: Johan Abildskov <jabildskov@grundfos.com>
+Date:   Wed May 10 13:54:01 2017 +0200
+
+    close #74 align 3 way merge
+
+[33mcommit 605ba13a2aa22845abfd9a9c8b00dfa5e9f36095[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Sat Apr 29 19:51:28 2017 +0200
+
+    close #72 add utils to basic commits
+
+[33mcommit d48920abbca504fe96fe0e63886339815ea0c866[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Thu Apr 27 20:09:51 2017 +0200
+
+    close #71 Fix basic branching branches and util class
+
+[33mcommit 673bb59915df069f59c9f7994556c72ca9a29f5d[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Thu Apr 27 19:16:12 2017 +0200
+
+    close #69 Create utility shell script for creation of exercise repo
+
+[33mcommit aa3c8758429fef9bac32b383e4078413a0d07f5e[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Thu Apr 13 11:21:30 2017 +0200
+
+    remove fluff file
+
+[33mcommit 5dcfa14af53dc1c1eda53d016dd54af307372712[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Thu Apr 13 11:21:11 2017 +0200
+
+    Add last links
+
+[33mcommit 700b3fdd75a22113bca14305be390a2606370d70[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Thu Apr 13 11:08:18 2017 +0200
+
+    Add link to Overview from README
+
+[33mcommit 5ee648b13122961310a8a9c1c2b43754190c488f[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Thu Apr 13 11:06:10 2017 +0200
+
+    Add links to exercise READMEs in Overview.md
+
+[33mcommit 8f84c6dfcfb428ad03e842f7ce9455fd4558f1da[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Thu Apr 13 10:56:28 2017 +0200
+
+    Add link to bad-commit
+
+[33mcommit 279133669fc321ac0cde511b318de4fd38aef011[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Wed Apr 12 21:10:51 2017 +0200
+
+    Add initial overview
+
+[33mcommit c4ebd379bec04c3fb0c31918bff97d261550f9e6[m
+Author: Sofus Albertsen <soa@praqma.net>
+Date:   Tue Mar 21 15:48:38 2017 +0100
+
+    added infor to merge-mergestort kata
+
+[33mcommit ea3afeba71065a849c82980d7e5b02b96c770c53[m
+Author: Sofus Albertsen <soa@praqma.net>
+Date:   Fri Mar 17 12:05:10 2017 +0100
+
+    moved hint to the top
+
+[33mcommit 1b9b5caaefd619009ea531ba947ac10e3882105c[m
+Author: Sofus Albertsen <soa@praqma.net>
+Date:   Fri Mar 17 12:02:47 2017 +0100
+
+    removed merging from basic-branching exercise
+
+[33mcommit d74daa74a00f8ad14d88a358ae3f14ad40596f3b[m
+Author: Sofus Albertsen <soa@praqma.net>
+Date:   Fri Mar 17 10:38:10 2017 +0100
+
+    explained git rm and git rm --cached
+
+[33mcommit c42162b3df082c0d8e4ac902bbb604eabc122a22[m
+Author: Sofus Albertsen <soa@praqma.net>
+Date:   Fri Mar 17 10:37:43 2017 +0100
+
+    made oneline intro to kata
+
+[33mcommit d14f8c4cbc50e70b9fc3c91f0a3fd70dab91f538[m
+Author: Sofus Albertsen <soa@praqma.net>
+Date:   Thu Mar 16 22:11:02 2017 +0100
+
+    made intro and changes to the basic-staging kata
+
+[33mcommit 36862236bbd7cfab8fa3942402700994a8b2fc4b[m
+Author: Sofus Albertsen <soa@praqma.net>
+Date:   Thu Mar 16 20:15:48 2017 +0100
+
+    made additions to basic-ignore kata
+
+[33mcommit 542aa31114ad26b00fa62b90ee7e4c0c66a8bfa3[m
+Merge: a0d7c91 35e0574
+Author: Johan Abildskov <jabildskov@grundfos.com>
+Date:   Fri Mar 17 10:33:15 2017 +0100
+
+    Merge branch '62-basic-ignore-kata-is-not-basic'
+
+[33mcommit 35e05749723569165b98abf19e912e71ceb861e9[m
+Author: Johan Abildskov <jabildskov@grundfos.com>
+Date:   Fri Mar 17 10:33:05 2017 +0100
+
+    close #62 basic ignore kata is not basic
+
+[33mcommit a0d7c91a436672e3cfc76203dcc775e83394305d[m
+Author: Johan Abildskov <jabildskov@grundfos.com>
+Date:   Tue Mar 14 13:35:58 2017 +0100
+
+    RUnway-1234
+
+[33mcommit 9d1c1a42726a20475a0363ce1300f23f677eaf81[m
+Author: Johan Abildskov <jabildskov@grundfos.com>
+Date:   Tue Mar 14 10:22:24 2017 +0100
+
+    close #60 move first step to step list in basic branching
+
+[33mcommit 65987911bb8e6025a61628173023e4bda6182616[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Sat Mar 11 12:37:10 2017 +0100
+
+    fix setup.sh
+
+[33mcommit 49fe1fdff508435d01d998c8bf0328b384f24622[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Sat Mar 11 12:12:02 2017 +0100
+
+    close #54 Add usage and contributing to README
+
+[33mcommit 721169e0c263fa48b12a382abe9267c16877cdf1[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Fri Feb 17 20:29:17 2017 +0100
+
+    close #47 Consistent Git casing in README
+
+[33mcommit 2575ea3e75282c117bcdb311f0a03f5a55d81bd5[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Fri Feb 17 20:27:07 2017 +0100
+
+    close #46 Hemingwayappify the README
+
+[33mcommit 654a813447fc439d0b9a2678d48bbbdca0227e38[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Fri Feb 17 20:18:53 2017 +0100
+
+    close #25 Remove exercise dir in setup of amend kata
+
+[33mcommit 3730ccb8a3b8e5bcf062aa3168db5fabf91cd0ff[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Fri Feb 17 20:18:08 2017 +0100
+
+    close #26 Remove exercise dir in setup of bad commit kata
+
+[33mcommit 0165d93ae6937b7b04a49a7059562e7b479b6097[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Fri Feb 17 20:15:58 2017 +0100
+
+    close #27 Remove exercise dir in setup of basic commits kata
+
+[33mcommit b401004189c2225d6ce29e349642d13d0580e704[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Fri Feb 17 20:15:19 2017 +0100
+
+    close #28 Remove exercise dir in setup of basic staging kata
+
+[33mcommit 5f24dd28e92c804c743a7a1e97eb30e3bdedadff[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Fri Feb 17 20:08:52 2017 +0100
+
+    close #30 Remove exercise dir in setup of detached head kata
+
+[33mcommit 5b52a84ed873c663b70fae09d2ed7d476f8b01e4[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Fri Feb 17 20:08:06 2017 +0100
+
+    close #31 Remove exercise dir in setup of ff merge kata
+
+[33mcommit 9e36c93062e013bb669d6ca4c5e8d4c5adee2869[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Fri Feb 17 20:07:25 2017 +0100
+
+    close #32 Remove exercise dir in setup of investigation kata
+
+[33mcommit 7ac81e47088ba61ae00d28c09ab4ca9e5ca0ac3a[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Fri Feb 17 20:02:46 2017 +0100
+
+    close #33 Remove exercise dir in setup of merge conflict kata
+
+[33mcommit 012acc6eae3c8f0484be12b53e269f386563f41f[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Fri Feb 17 20:01:59 2017 +0100
+
+    close #34 Remove exercise dir in setup of reorder the history kata
+
+[33mcommit 964134015bb2a56153ec4fa4e8dcc1b982fc9742[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Fri Feb 17 20:00:25 2017 +0100
+
+    close #35 Remove exercise dir in setup of reset kata
+
+[33mcommit 882efd1e2688fc3312863340344f03a3fe20cfe0[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Fri Feb 17 19:59:13 2017 +0100
+
+    close #36 Remove exercise dir in setup of save my commit kata
+
+[33mcommit 039260bdb8462dc7b7a25e93d03f5cc172c07de1[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Fri Feb 17 19:58:28 2017 +0100
+
+    close #37 Remove exercise dir in setup of squashing kata
+
+[33mcommit 2aefc3b839be714d960d47407f972a5fb4edcd93[m
+Merge: 6f32132 7950494
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Fri Feb 17 19:56:01 2017 +0100
+
+    Merge pull request #44 from praqma-training/ready/38-Remove-exercise-dir-in-setup-of-submodules-kata
+    
+    close #38 Remove exercise dir in setup of submodules kata
+
+[33mcommit 795049426e9c8ce5bc6aed3620354efda8432676[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Fri Feb 17 19:54:46 2017 +0100
+
+    close #38 Remove exercise dir in setup of submodules kata
+
+[33mcommit 6f32132627c45401db663975f4df148ef2454438[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Fri Feb 17 19:52:59 2017 +0100
+
+    close #39 Set executable flag on bad commit setup
+
+[33mcommit 2584c93a2c5c8daab182a9060ca6922b11a2fe54[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Fri Feb 17 19:52:18 2017 +0100
+
+    close #40 Set executable flag on commit on wrong branch setup
+
+[33mcommit 275245a26fdd61dfaa048218af02635f3f6052a0[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Fri Feb 17 19:51:29 2017 +0100
+
+    close #41 Set executable flag on reset kata setup file
+
+[33mcommit 5df9d7708b366fc82c71bf117716f4b14886b02c[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Fri Feb 17 19:50:38 2017 +0100
+
+    close #42 Set executable flag on squashing kata setup file
+
+[33mcommit e8b3566808272ff64630f61e9423b4efce487747[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Fri Feb 17 19:49:28 2017 +0100
+
+    close #43 Set executable flag on submodules kata setup file
+
+[33mcommit db4c31f612058648e0283ddc82b1c734a9f72d0e[m
+Merge: c2e788a 1469409
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Fri Feb 17 19:48:20 2017 +0100
+
+    Merge pull request #24 from OEHC/patch-2
+    
+    Add merge to list if useful commands. Closes #23
+
+[33mcommit 14694099a1ac3621dfd09e55fa4e45d1a84e6017[m
+Author: Oliver Emil Harritslev Christensen <oliverehc@gmail.com>
+Date:   Sun Feb 12 16:01:42 2017 +0100
+
+    Add merge to list if useful commands. Closes #23
+
+[33mcommit c2e788ad261aadd6959e4f2dd954a11f9ff2d320[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Fri Feb 10 08:27:23 2017 +0100
+
+    Add license
+
+[33mcommit 63730d2dedd677791205a9cafb976063ff2bb6e4[m
+Author: Mads Baggesen <mba@praqma.com>
+Date:   Wed Feb 8 19:13:50 2017 +0100
+
+    Fixing windows line endings, and setting chmod +x
+
+[33mcommit c3c9316389e28c16b7e53f547ca25a7f168aaecb[m
+Merge: 058cb75 8202514
+Author: Mads Baggesen <mba@praqma.com>
+Date:   Wed Feb 8 19:01:20 2017 +0100
+
+    Merge branch 'master' of ssh://github.com/praqma-training/gitkatas
+
+[33mcommit 058cb7544a4db045f1138f32c186ed16ac800ed6[m
+Author: Mads Baggesen <mba@praqma.com>
+Date:   Wed Feb 8 19:01:01 2017 +0100
+
+    Fixing windows line endings, and setting chmod +x
+
+[33mcommit 8202514d81964f0e77ccdad71611eaa9559555cf[m
+Merge: e980e7b 7b22bc9
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Wed Feb 8 17:56:07 2017 +0100
+
+    Merge pull request #22 from praqma-training/21-fix-readme
+    
+    Fix #21: Git with uppercase G
+
+[33mcommit 7b22bc93d477bf65e5b221a712e88d0801a88261[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Wed Feb 8 17:14:50 2017 +0100
+
+    Fix #21: Git with uppercase G
+
+[33mcommit e980e7be8d45e53946ef586fa38c0edb87d329c3[m
+Author: Mads Baggesen <mba@praqma.com>
+Date:   Wed Feb 8 11:16:55 2017 +0100
+
+    README.md included with simple task description
+
+[33mcommit a06b4c0230b828522b9875668c6aa24c7279945a[m
+Author: Mads Baggesen <mba@praqma.com>
+Date:   Wed Feb 8 11:14:09 2017 +0100
+
+    First draft on new kata - merging simple python code
+
+[33mcommit 874727a92f72c55fd3b26aabc639dd23d3f09098[m
+Author: Mads Baggesen <mba@praqma.com>
+Date:   Wed Feb 8 10:24:35 2017 +0100
+
+    dos2unix fix of line endings in setup.sh, chmod +x as well
+
+[33mcommit 8e588bb88da6101fcf9acfcf11ad4d25e9af8ed5[m
+Author: Johan Abildskov <jabildskov@grundfos.com>
+Date:   Wed Feb 8 09:17:22 2017 +0100
+
+    add .swp files to .gitignore
+
+[33mcommit 0df67e718a099f4381802c6ed9e6b600549925e8[m
+Author: Johan Abildskov <jabildskov@grundfos.com>
+Date:   Wed Feb 8 07:59:45 2017 +0100
+
+    Add investigative kata
+
+[33mcommit 6bc770571d5ff27ec5053d431e348c5551ee1601[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Tue Feb 7 16:48:33 2017 +0100
+
+    Cleanup in basic-ignore exercise
+
+[33mcommit 3eda928dc5cdc077e7f2ab5c638b6554d42a23cc[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Wed Feb 1 15:34:56 2017 +0100
+
+    Update rebase-branch readme
+
+[33mcommit 0077e90a6620f382fddaf68df5483a394e00cc94[m
+Merge: bfcb799 a6c7f7d
+Author: Mads Baggesen <mba@praqma.com>
+Date:   Wed Feb 1 14:38:22 2017 +0100
+
+    Merge pull request #20 from OEHC/patch-1
+    
+    Put command in code-tags
+
+[33mcommit a6c7f7dacbcb32ceb7251a52816ee8f5c629acac[m
+Author: Oliver Emil Harritslev Christensen <oliverehc@gmail.com>
+Date:   Wed Feb 1 14:28:22 2017 +0100
+
+    Put command in code-tags
+
+[33mcommit bfcb799d5df5e48cb9f9bb53c1b8d4b15a58a1f3[m
+Author: Mads Baggesen <mba@praqma.com>
+Date:   Wed Feb 1 14:09:09 2017 +0100
+
+    Extended and updated excercise, based on same git setup - just more student reflection
+
+[33mcommit 0dcb459c81a299accd0d2bf5d37555d0b98d0d58[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Tue Jan 31 13:19:29 2017 +0100
+
+    Make basic-branching setup executable
+
+[33mcommit 8fa9e7fa6d9b21418a45a03049f9edc4704721a2[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Mon Jan 30 15:48:35 2017 +0100
+
+    Update amend kata
+
+[33mcommit e3d56c5c5cc0119551ad89633a6665f8a32fc474[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Sun Jan 29 12:27:23 2017 +0100
+
+    Update merge conflict README
+
+[33mcommit 2a36f7eb44d707bb62cd7c0cdab6d15716d6c1dc[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Sun Jan 29 12:22:23 2017 +0100
+
+    Update setup comment
+
+[33mcommit 2552fc940a02e1d1aca1578044bf83dac559d2b9[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Sun Jan 29 11:17:41 2017 +0100
+
+    Make 3-way exercise text more generic
+
+[33mcommit 78fb98572199a1f6ce0eebfc9d4ee2add94a2687[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Sun Jan 29 10:52:21 2017 +0100
+
+    Update kata title
+
+[33mcommit c85ac833e7a9abed89f916acfc56ff0b8fb89ec3[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Fri Jan 27 13:54:16 2017 +0100
+
+    Fix kata name in merge-conflict kata setup
+
+[33mcommit a14fe476583a8c4cd16b97b337c23cecc965e4d1[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Fri Jan 27 13:48:24 2017 +0100
+
+    Update 3-way kate setup
+
+[33mcommit fe14b69cab3d35b231e715e0a06e0da26f1f2286[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Fri Jan 27 13:46:52 2017 +0100
+
+    Update 3-way merge kata title
+
+[33mcommit 6a6e8d92a3bd5126129bfd8c6729a214c75b654a[m
+Author: Henrik René Høegh <heh@praqma.net>
+Date:   Wed Jan 25 18:36:31 2017 +0100
+
+    Added commit of file1.txt before added to gitignore
+
+[33mcommit 0cc3388a43fcae59aaba116785d21d7ffb092d74[m
+Author: Henrik René Høegh <heh@praqma.net>
+Date:   Wed Jan 25 18:01:03 2017 +0100
+
+    added missing file
+
+[33mcommit 151e16dbbab563dfe74d39af531a6c416c872217[m
+Author: Henrik René Høegh <heh@praqma.net>
+Date:   Wed Jan 25 17:55:30 2017 +0100
+
+    Added x to setup.sh
+
+[33mcommit 3cb578add14147dba9d8f19f095807a43c81e0b5[m
+Author: Henrik René Høegh <heh@praqma.net>
+Date:   Wed Jan 25 17:51:17 2017 +0100
+
+    Added x to setup.sh
+
+[33mcommit 69758eb859691347c9f45b587750860a45070f52[m
+Author: Henrik René Høegh <heh@praqma.net>
+Date:   Wed Jan 25 17:34:23 2017 +0100
+
+    setup.sh now with x
+
+[33mcommit 1eef17814d89be388d0cc69b6ecd31a9236382cf[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Wed Jan 25 11:20:47 2017 +0100
+
+    Add RandomSort as maintainer
+
+[33mcommit f21c112621d26584076ab7a1128b4980b30a9643[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Wed Jan 25 11:17:36 2017 +0100
+
+    Add basic git configuration
+
+[33mcommit 03dfe9be0d099fdd228895d2935db08d1f403afb[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Fri Jan 20 15:26:16 2017 +0100
+
+    Consistent use of ordered lists in tasks
+
+[33mcommit 94d0402a7b9081cd02293ccd1c1e0f0364638cae[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Fri Jan 20 14:43:37 2017 +0100
+
+    Update README
+
+[33mcommit 836be142cca17d84f9deb19d739e11c04e4fbe88[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Fri Jan 20 14:40:32 2017 +0100
+
+    Ordered list in basic-commits
+
+[33mcommit e411440de10e8c9fc5d56f41d627a53e081d069f[m
+Author: Johan Abildskov <jabildskov@grundfos.com>
+Date:   Tue Jan 3 12:36:33 2017 +0100
+
+    Add git merge to README
+
+[33mcommit e0f707bc6c4d1f7b0f03a38aef255505fd3445fa[m
+Author: Johan Abildskov <jabildskov@grundfos.com>
+Date:   Tue Jan 3 11:40:47 2017 +0100
+
+    Add cd to basic-branching README.md
+
+[33mcommit c50886237a31539976f7fd6fc6c49fc63053b9af[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Mon Jan 2 19:44:11 2017 +0100
+
+    fix issue with branching from empty repo
+
+[33mcommit 0d4f042eb1d0cc220f0230b57d7d6a9bf2511eb4[m
+Merge: f8f46f0 e40e943
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Mon Jan 2 13:13:34 2017 +0100
+
+    Merge pull request #17 from jarnfast/master
+    
+    fixed branch creation
+
+[33mcommit f8f46f08f6cd533b2364045678a8a1486a1fb8a6[m
+Author: Mike Long <mike@praqma.com>
+Date:   Mon Dec 19 16:03:51 2016 +0100
+
+    Add rebase exercise
+
+[33mcommit 61bb9aeb886a42675ab107b97b82217df3ba5127[m
+Author: Mike Long <mike@praqma.com>
+Date:   Sun Dec 18 20:42:28 2016 +0100
+
+    Update the confilct exercise
+
+[33mcommit e49dcf6deedf6a1b0b482f29f3de728b3cd4487f[m
+Author: Mike Long <mike@praqma.com>
+Date:   Sun Dec 18 20:16:38 2016 +0100
+
+    Make setup script executable
+
+[33mcommit 065335fe3c603d27d2935115f288272a1c551054[m
+Author: Mike Long <mike@praqma.com>
+Date:   Fri Dec 16 16:53:39 2016 +0100
+
+    3-way-merge exercise
+
+[33mcommit 1542bca360c65042a9c8773d77453e7154a0b799[m
+Author: Mike Long <mike@praqma.com>
+Date:   Thu Dec 15 15:04:04 2016 +0100
+
+    Fast-forward merge kata
+
+[33mcommit e40e94352bb16843b32cb9c1f98854f28b2ab4e6[m
+Author: Jens Arnfast <arn@kamstrup.com>
+Date:   Thu Dec 1 10:04:20 2016 +0100
+
+    fixed branch creation
+
+[33mcommit f8ed8aa9bda8ae68e90ca8c19ef0a11ee47f075a[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Thu Dec 1 07:58:41 2016 +0100
+
+    clarify save-my-commit
+
+[33mcommit 9f3a1cfe029901466ddb57fce940601fc70c480f[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Wed Nov 30 21:30:18 2016 +0100
+
+    Add hook exercise
+
+[33mcommit d22632a748b05c2d349555011a913e6aa2632026[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Wed Nov 30 21:18:02 2016 +0100
+
+    Copy submodule exercise from slides
+
+[33mcommit 17247451a133f401bed9f554c07eb37e31cff93a[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Wed Nov 30 20:51:38 2016 +0100
+
+    update to new form + clarify
+
+[33mcommit 53ac1a87023efc3d7431e353261c7f5dfc761882[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Wed Nov 30 20:46:53 2016 +0100
+
+    Add reset exercise from slides
+
+[33mcommit aff553b9c0ce8e0db86ef05b8c4ac0a618f543ed[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Wed Nov 30 20:27:34 2016 +0100
+
+    clarify squash readme and add initial commit
+
+[33mcommit 2fe62a6f9578d4be27142ac3d86ce85a43f2cb71[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Wed Nov 30 20:17:36 2016 +0100
+
+    move amend exercise from slides
+
+[33mcommit 84122f94d0bcae49036f2f74a5b1f78fcd710096[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Wed Nov 30 20:06:45 2016 +0100
+
+    Add ls-tree to objects
+
+[33mcommit 134917ef632d839bd0d3ca92d45691e2a61cb633[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Wed Nov 30 20:02:59 2016 +0100
+
+    Run setup in right context
+
+[33mcommit 9bf81b58cd7b06c75a795cd509389dcced60dee8[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Wed Nov 30 19:57:28 2016 +0100
+
+    Move exercise from slides
+
+[33mcommit 8c83d4ec2b0d8360c586611f1644e7ab527b609c[m
+Merge: 64cc5a6 e47ff2e
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Wed Nov 30 11:53:04 2016 +0100
+
+    Merge pull request #15 from SirCAS/bugfix/typos
+    
+    Added missing aprostoffs for alias commands
+
+[33mcommit e47ff2e786634e155ba0d2f5a6a176e669175b7c[m
+Author: Christoffer Illum Søndergaard <cis@kamstrup.dk>
+Date:   Wed Nov 30 10:54:11 2016 +0100
+
+    Added missing aprostoffs for alias commands
+
+[33mcommit 64cc5a62bfce5c66d4c2e7d578ffa57e3925ab9b[m
+Merge: 90ea41c 3fedcb4
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Wed Nov 30 10:47:44 2016 +0100
+
+    Merge pull request #11 from SirCAS/bugfix/basic-commits
+    
+    Added missing aprostoffs for alias command
+
+[33mcommit 3fedcb4a641ecf80f8002e0194302a9e0586044e[m
+Author: Christoffer Illum Søndergaard <cis@kamstrup.dk>
+Date:   Wed Nov 30 10:37:59 2016 +0100
+
+    Added missing aprostoffs for alias command
+
+[33mcommit 90ea41caa22d4a8edee806a3af07e04ca59d9254[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Wed Nov 30 10:22:11 2016 +0100
+
+    Update title
+
+[33mcommit e5d7375cded9dd8c0a9fe22159157752d40810a3[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Tue Nov 29 20:05:23 2016 +0100
+
+    add cd into exercise
+
+[33mcommit 73d327caa4a202888db65c335fa6f21222d287b7[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Tue Nov 29 19:41:47 2016 +0100
+
+    Add basic-staging exercise
+
+[33mcommit 6fa8ed9293d2531c75e76de3bf6abce024d59a93[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Tue Nov 29 19:40:01 2016 +0100
+
+    fix kata name
+
+[33mcommit 1e2f82ba488c08c30a0f12597a0be0c00551d893[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Tue Nov 29 18:00:56 2016 +0100
+
+    update basic-ignore to new format
+
+[33mcommit c61189fcd3000bd586dc0865b55e781a248b0fae[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Tue Nov 29 18:00:43 2016 +0100
+
+    add exercise dirs to ignore
+
+[33mcommit 5d3b5449ead6537a06a206ac98cee7359a7da84a[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Tue Nov 29 17:47:28 2016 +0100
+
+    Update Basic Branching
+
+[33mcommit 4579e82ecc4ad9870fb15167f4409afd2cd0130a[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Tue Nov 29 17:28:11 2016 +0100
+
+    Update basic-commits
+
+[33mcommit 4870a4df5a1f5612f756602befad346ac89b6d5d[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Tue Nov 29 17:21:12 2016 +0100
+
+    clarify shell usage
+
+[33mcommit 53a0383667640d6afc1852590c58dbd9bd4dfa8c[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Tue Nov 29 17:16:54 2016 +0100
+
+    reformulate README.d to new format
+
+[33mcommit 9e956c6e5d3b914e57845f9714bf102f0e34d8e9[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Tue Nov 29 17:13:03 2016 +0100
+
+    restore normalcy in README.md
+
+[33mcommit e11372e033b04017bc19c5765f971b83f8f1e546[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Tue Nov 29 17:11:06 2016 +0100
+
+    add reorder-the-history
+
+[33mcommit 940382f147149c38cee625359c0f4c94f5b7b5c3[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Tue Nov 29 17:09:07 2016 +0100
+
+    save my commit
+
+[33mcommit 53734b260f2cc63da019a944f3eaf2d9b9b77f6d[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Tue Nov 29 17:08:03 2016 +0100
+
+    commit on wrong branch
+
+[33mcommit e252ef8e12b23eb503cdf4d1f553b46406f712f9[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Tue Nov 29 17:04:02 2016 +0100
+
+    add bad commit
+
+[33mcommit a9d01623064d8ab80d8b721881bff77b1ebd106b[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Tue Nov 29 17:02:26 2016 +0100
+
+    squash and detached head
+
+[33mcommit b21b290f6d2cd571e5c2aff89507199f3b3a1e09[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Tue Nov 29 16:57:49 2016 +0100
+
+    Add merge-conflict
+
+[33mcommit 5e7e1bef894a9de6bdd6acc35cc3362db5012a2f[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Tue Nov 29 16:55:18 2016 +0100
+
+    add .gitignore
+
+[33mcommit 70765c758c917086592b255ac950df0655427ac9[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Tue Nov 29 16:54:55 2016 +0100
+
+    remove random file
+
+[33mcommit debcebe23188fb3f7a2c4332d5978eaae4101b63[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Tue Nov 29 16:54:19 2016 +0100
+
+    basic-branching README.md
+
+[33mcommit 38bf215c9e7d09b5bed1cf8d36bf6db469fbc3e5[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Tue Nov 29 16:53:26 2016 +0100
+
+    add basic-ignore
+
+[33mcommit 1955c5e5b0ff3f2aebc916b09672a79d67c5152b[m
+Merge: 57443e1 9485fa5
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Tue Nov 29 16:42:41 2016 +0100
+
+    merge basic-commits
+
+[33mcommit 57443e1f8954cc5986b3d7d2d65ff2e00b19ec54[m
+Merge: 458006e 3674b5c
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Tue Nov 29 16:36:41 2016 +0100
+
+    merged basic-branching in
+
+[33mcommit 3674b5c5fb326230875d2fa4a71a4d8a368d27c8[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Mon Nov 28 11:14:42 2016 +0100
+
+    Revert "Add file1.txt"
+    
+    This reverts commit ba8c47e7362a5536d0b8bf045f2776c3fa411548.
+
+[33mcommit ba8c47e7362a5536d0b8bf045f2776c3fa411548[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Mon Nov 28 11:09:45 2016 +0100
+
+    Add file1.txt
+
+[33mcommit 0b1361056e74c066e123cade46d098dfe577c09d[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Mon Nov 28 11:09:39 2016 +0100
+
+    Make setup.sh executable
+
+[33mcommit 9485fa5c9893707b055f79c782cdc361442dfcbd[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Mon Nov 28 11:00:13 2016 +0100
+
+    Make setup.sh executable
+
+[33mcommit 458006e8e0de931e9ef512ed05909293a9bf8a40[m
+Author: Martin Mosegaard Amdisen <martin.amdisen@praqma.com>
+Date:   Mon Nov 28 10:56:06 2016 +0100
+
+    Fix #10 proofread readme
+    
+    Minor update to readme, including markdown fix.
+
+[33mcommit 3d7ed8ee337184bdecf37ca41724b3384c6e0ffb[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Tue Nov 8 20:24:57 2016 +0100
+
+    Add starting point
+
+[33mcommit c63e7a6f6bbde8dc7be0e5d3cea7703616543edc[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Tue Nov 8 20:15:48 2016 +0100
+
+    Fix branch name
+
+[33mcommit 2f52de5e8a9d8f883517094846838bd98b69e597[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Tue Nov 8 20:14:06 2016 +0100
+
+    fix bash variable assignment
+
+[33mcommit 93be3089bd7885bf860a96467a7bfed1b1c26973[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Tue Nov 8 20:09:59 2016 +0100
+
+    clarify git branch --list
+
+[33mcommit cd189383dca8c4152b10c3f5b321f953dad70387[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Tue Nov 8 20:05:39 2016 +0100
+
+    split git commit
+
+[33mcommit 8da1079c37b35a52f20535a3df27d8ccbe80631f[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Tue Nov 8 20:03:38 2016 +0100
+
+    fix bash variable assignment
+
+[33mcommit 4dda7577a8ec53fc21e1265a879c0dedd470f76d[m
+Author: Johan <randomsort@gmail.com>
+Date:   Tue Nov 8 17:50:48 2016 +0100
+
+    Add kata description
+
+[33mcommit 5499e2d1392c7eaa2eacd79bb6452884a35607b2[m
+Author: Johan <randomsort@gmail.com>
+Date:   Tue Nov 8 17:14:55 2016 +0100
+
+    Clarify README.md update
+
+[33mcommit f14815188e205d89075fedb532536d66ffcdbe54[m
+Author: Johan <randomsort@gmail.com>
+Date:   Tue Nov 8 14:21:33 2016 +0100
+
+    Add exercise basic-commits
+
+[33mcommit 378d06ef8bf34e4544be10d018993cf9d894796d[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Mon Sep 12 15:31:27 2016 +0200
+
+    slightly more info in README
+
+[33mcommit 9c2b46ba02b53195d649d7f5a1bb0255c5bb82db[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Fri Sep 9 09:33:12 2016 +0200
+
+    Removed setup.sh to unbefuddle Brian
+
+[33mcommit 281c4912210fa89ed391f7b19dad17fb59ad90f8[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Fri Sep 9 07:13:37 2016 +0200
+
+    Add better description
+
+[33mcommit c55e054c813b187cb22b08331c8a0333a539da65[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Thu Sep 8 20:44:37 2016 +0200
+
+    remove trash
+
+[33mcommit be97ec6b590752ab330f586fb4f8115a598c83bd[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Thu Sep 8 20:32:28 2016 +0200
+
+    tinker with setup.sh
+
+[33mcommit 0d7899d646dc6616c0939cd8780f6d2d407b95ff[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Thu Sep 8 20:31:19 2016 +0200
+
+    add indispensable truth!
+
+[33mcommit 4d66ed2ac84c3e49acac26144607fcdfae213c14[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Thu Sep 8 20:31:18 2016 +0200
+
+    add relevant fact
+
+[33mcommit 482bb6b239694be8aba8cbbb213b52bf2f81af43[m
+Author: Johan Abildskov <randomsort@gmail.com>
+Date:   Thu Sep 8 20:31:14 2016 +0200
+
+    more tinker
+
+[33mcommit ad31d12363a181b998317d5f075d89b3fb990122[m
+Author: Johan Sigfred Abildskov <randomsort@gmail.com>
+Date:   Thu Sep 8 19:06:03 2016 +0200
+
+    Initial commit
